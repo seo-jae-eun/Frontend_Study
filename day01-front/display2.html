@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container1 {
+            display: flex;
+            /* flex-direction: row; */
+            /* justify-content: space-around; */
+            /* align-items: flex-end; */
+            background-color: aqua;
+            width: 400px;
+            height: 150px;
+        }
+        .item {
+            background-color: gray;
+            width: 80px;
+            height: 50px;
+            margin: 10px;
+            flex-basis: 100px;
+            /* 0보다 큰 값이 설정되면 아이템의 크기가 유동적 변함, 크게 해줌 */
+            flex-grow: 0;
+            /* 0보다 큰 값이 설정되면 아이템의 크기가 유동적 변함, basis보다 작은 값을 설정할 수 있는지 */
+            flex-shrink: 0;
+        }
+        .first {
+            order: -1;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- flex-container -->
+     <!-- display 속성을 flex -->
+      <!-- 
+        flex-direction : flex-item의 배치될 방향을 지정
+            row(기본값) : 왼쪽에서 오른쪽
+            row-reverse : 오른쪽에서 왼쪽
+            column : 위에서 아래쪽
+            column-reverse : 아래에서 위쪽
+
+        justify-content : flex-item의 정렬 방식을 지정
+            flex-start(기본값) : 컨테이너의 앞에서부터 배치
+            flex-end : 컨테이너의 뒤에서부터 배치
+            center : 컨테이너의 가운데에서부터 배치
+            space-between : flex-item 사이에 여유 공간을 두고 배치
+            space-around : flex-item 앞 뒤 사이에 여유 공간을 두고 배치
+
+        align-items : flex-item의 수직 방향 정렬 방식을 지정
+            stretch(기본값) : flex-item의 크기가 컨테이너의 크기와 같게 늘어남
+            flex-start : 위쪽에서부터 배치
+            flex-end : 아래쪽에서부터 배치
+            center : 가운데에 배치
+            baseline : 컨테이너의 기준선에 배치
+
+        flex-wrap : flex-item이 컨테이너의 크기를 넘으면 다음 item의 위치를 어떻게 할건지 지정
+            nowrap(기본값) : flex-item이 다음 줄로 넘어가진 않고 아이템의 너비를 줄임
+            wrap : 공간이 없으면 item을 다음 줄에 추가
+            wrap-reverse : 공간이 없으면 item을 이전 줄에 추가
+
+        flex-flow
+        align-content
+      -->
+    <div class="flex-container1">
+        <!-- flex-item -->
+         <!-- 
+            order : 순서 지정
+            margin
+            flex-basis : flex-item의 기본 크기
+                        flex-direction이 row면 width
+                        flex-direction이 column이면 height
+            flex(flex-basis, flex-shrink, flex-grow)
+         -->
+        <div class="item">1</div>
+        <div class="item first">2</div>
+        <div class="item">3</div>
+    </div>
+
+
+    
+</body>
+</html>

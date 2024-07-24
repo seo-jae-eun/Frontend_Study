@@ -1,0 +1,40 @@
+/* 
+선택자 {
+    디자인 코드 작성
+} 
+    
+선택자 : 태그이름, #아이디, .클래스이름
+*/
+p {
+    color: red;
+}
+#p1 {
+    color: green;
+}
+#p2 {
+    color: blue;
+}
+#p1, #p2 {
+    background-color: yellow;
+}
+
+/* 디자인을 입힐 때 class 사용 */
+.class1 {
+    color: pink;
+}
+.class2 {
+    background-color: purple;
+}
+.class1, .class2 {
+    font-size: 30px;
+}
+
+/* 자손 선택자 : 자식의 자식의 자식도 다 적용 */
+div p {
+    color: black;
+}
+
+/* 자식 선택자 : 바로 밑의 자식만 적용 */
+div > p {
+    background-color: greenyellow;
+}

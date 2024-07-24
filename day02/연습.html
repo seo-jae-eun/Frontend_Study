@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        #header {
+            display: flex;
+            position: sticky;
+            top: 0;
+            border: 1px solid black;
+            margin-bottom: 10px;
+            background-color: white;
+        }
+        #fixed_button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: white;
+        }
+        .item {
+            margin-right: 10px;
+        }
+        .item:nth-child(1) {
+            margin-right: auto;
+        }
+        .item:nth-child(2) {
+            display: none;
+        }
+        .item:nth-child(3) {
+            display: none;
+        }
+
+        @media(min-width: 500px) {
+            .item:nth-child(2) {
+                display: inline;
+            }
+            .item:nth-child(3) {
+                display: inline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <a class="item" href="/">홈</a>
+        <a class="item" href="/login">로그인</a>
+        <a class="item" href="/login">회원 가입</a>
+    </div>
+    <div class="fixed_button">△</div>
+    <div id="container">
+        <div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 1</h2>
+            <p>내용 1</p>
+        </div>
+        <div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 2</h2>
+            <p>내용 2</p>
+        </div><div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 3</h2>
+            <p>내용 3</p>
+        </div><div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 4</h2>
+            <p>내용 4</p>
+        </div><div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 5</h2>
+            <p>내용 5</p>
+        </div><div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 6</h2>
+            <p>내용 6</p>
+        </div><div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 7</h2>
+            <p>내용 7</p>
+        </div><div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 8</h2>
+            <p>내용 8</p>
+        </div><div class="card">
+            <img src="https://picsum.photos/200/250">
+            <h2>제목 9</h2>
+            <p>내용 9</p>
+        </div>
+    </div>
+    <div id="footer">
+        풋터
+    </div>
+    
+</body>
+</html>

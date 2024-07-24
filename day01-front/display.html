@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 50px;
+        }
+        .div1 {
+            /* 해당 태그 자체는 인라인처럼 동작 */
+            /* 해당 태그 안에 있는 애들은 블록처럼 동작 */
+            /* display: inline-block;
+            border: 1px solid black; */
+            background-color: red;
+        }
+        .div2 {
+            background-color: green;
+
+        }
+        .div3 {
+            background-color: blue;
+
+        }
+        .inline {
+            display: inline;
+        }
+        .inline-block {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">박스1</div>
+    <div class="div2">박스2</div>
+    <div class="div3">박스3</div>
+
+    <div class="div1 inline">박스1</div>
+    <div class="div2 inline">박스2</div>
+    <div class="div3 inline">박스3</div>
+
+    <!-- 1줄을 전부 차지하지 않지만 안에서는 block 처럼 동작 -->
+    <div class="div1 inline-block">박스1</div>
+    <div class="div2 inline-block">박스2</div>
+    <div class="div3 inline-block">박스3</div>
+
+
+
+
+    <!-- 
+    기본 display가 block
+    block은 화면에서 1줄 전부 차지
+     -->
+    <div>div</div>
+
+
+    <!-- 
+    기본 display가 inline
+    inline 화면에서 내용이 보내지는만큼만 차지
+     -->
+    <span>span</span>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var vs let
+        // var : 재생성 o, 재할당 o (지양)
+        // let : 재생성 x, 재할당 o
+        var ex1 = 10;
+        var ex1 = 20;
+        // 이게 가능하다..
+
+        // let ex2 = 10;
+        // let ex2 = 20;
+        // 불가능
+
+        let var1 = 10;
+        let var2 = "test1";
+        let var3 = false;
+        let var4 = 'test2';
+
+        console.log(typeof (var1));
+        console.log(typeof (var2));
+        console.log(typeof (var3));
+        console.log(typeof (var4));
+
+        console.log(var1);
+        var1 = 20;
+        console.log(var1);
+
+        // const (상수) : 재생성 x, 재할당 x (=final)
+        const con1 = 10;
+        const con2 = "test";
+        const con3 = true;
+
+        console.log(con1);
+        con1 = 20;
+        console.log(con1);
+    </script>
+
+
+</body>
+
+</html>

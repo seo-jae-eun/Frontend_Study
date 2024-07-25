@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="lotto()">로또 번호 생성</button>
+
+    <script>
+
+        function lotto() {
+            let arr = [];
+            let count = 0;
+            while (count < 6) {
+                let randomFourDigitNumber = Math.floor(1 + Math.random() * 45);
+                if (arr.indexOf(randomFourDigitNumber) === -1) {
+                    arr.push(randomFourDigitNumber);
+                    count++;
+                }
+            }
+
+            arr.sort((a, b) => a - b);
+            console.log(arr);
+        }
+    </script>
+
+</body>
+
+</html>

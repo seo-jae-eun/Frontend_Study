@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    div {
+      padding: 10px;
+      margin: 10;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 왼쪽 클릭 -->
+  <div onclick="test1('click')">
+    왼쪽 클릭 이벤트
+  </div>
+  <!-- 오른쪽 클릭 -->
+  <div oncontextmenu="test1('click')">
+    오른쪽 클릭 이벤트
+  </div>
+  <!-- 마우스 올려놨을 때 -->
+  <div onmouseover="test1('mouseover')">
+    마우스 오버
+  </div>
+  <div onmousewheel="test1('mousewheel')">
+    마우스 휠
+  </div>
+  <!-- 마우스 진입할 때 -->
+  <div onmouseenter="test1('mouseenter')">
+    마우스 엔터
+  </div>
+  <div id="test">
+    JS로 이벤트 추가
+  </div>
+  <script>
+    function test1(str) {
+      console.log(str);
+    }
+
+    // document 문서 전체
+    let testDiv = document.getElementById("test");
+    testDiv.addEventListener("click", test1);
+
+
+
+  </script>
+</body>
+
+</html>

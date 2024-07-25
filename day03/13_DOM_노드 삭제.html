@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test01">
+      추가 전
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+    </div>
+    <button onclick="test()">버튼</button>
+
+    <script>
+      function test() {
+        let divTag = document.getElementById("test01");
+        let pTags = document.getElementsByTagName("p")
+        // pTags[1].remove();
+        // divTag.removeChild(pTags[1]);
+        // divTag.remove()
+      }
+    </script>
+  </body>
+</html>

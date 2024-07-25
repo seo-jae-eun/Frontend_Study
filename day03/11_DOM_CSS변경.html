@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #test01 {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <p id="test01">css 변경 전</p>
+  <button onclick="test()">버튼</button>
+
+  <script>
+    function test() {
+      let asd = document.getElementById("test01");
+      asd.style.color = "blue";
+      asd.style.backgroundColor = "black";
+      asd.style.fontSize = "30px";
+    }
+  </script>
+</body>
+
+</html>

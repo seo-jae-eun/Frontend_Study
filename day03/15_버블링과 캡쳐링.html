@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1,
+        #div2 {
+            background-color: green;
+            padding: 50px;
+            color: white;
+        }
+
+        #bubbling,
+        #capturing {
+            background-color: white;
+            color: black;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 버블링 : 자식 태그의 이벤트가 부모에게까지 전파되는 것 -->
+    <div id="div1">
+        <h1>버블링</h1>
+        <div id="bubbling">클릭 해보시오.</div>
+    </div>
+
+    <hr>
+
+    <!-- 의도적으로 설정해줘야 발생함 -->
+    <div id="div2">
+        <h1>캡쳐링</h1>
+        <div id="capturing">클릭 해보시오.</div>
+    </div>
+
+    <script>
+        const div1 = document.getElementById("div1");
+        const bubbling = document.getElementById("bubbling");
+
+        div1.addEventListener("click", clickRed);
+        bubbling.addEventListener("click", clickWhite);
+
+        const div2 = document.getElementById("div2");
+        const capturing = document.getElementById("capturing");
+
+        div2.addEventListener("click", clickRed, true);
+        capturing.addEventListener("click", clickWhite, true);
+
+
+        function clickRed() {
+            alert("초록 박스 클릭");
+        }
+        function clickWhite() {
+            event.stopPropagation(); // 이벤트 전파를 막아줌
+            alert("하얀 박스 클릭");
+        }
+
+
+    </script>
+</body>
+
+</html>

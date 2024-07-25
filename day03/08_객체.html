@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 배열
+    let arr1 = [1, 2, 3, 4]
+    console.log(typeof (arr1)); // object
+
+    // 자바로 치면 new Map();, 형식은 JSON
+    // 객체 만드는 법1 (객체 하나 만들 때)
+    let obj1 = {
+      name: "test01",
+      age: 30,
+      gender: "male",
+      method: function () {
+        console.log("method");
+      }
+    }
+    console.log(typeof (obj1)); // object
+
+    console.log(obj1.name);
+    console.log(obj1.age);
+    console.log(obj1.gender);
+    obj1.method()
+
+
+    // 객체 만드는 법2 (자바의 클래스처럼)
+    function Obj(name, age, gender) {
+      this.name = name;
+      this.age = age;
+      this.gender = gender;
+      this.method = function () {
+        console.log(name + "method");
+      }
+    }
+
+    // 객체 만드는 법3 (자바의 클래스처럼)
+    function Obj2(name, age, gender) {
+      return {
+        name: name,
+        age: age,
+        gender: gender,
+        method: function () {
+          console.log(name + "method");
+        }
+      }
+    }
+
+    let obj2 = new Obj("test02", 20, "male");
+    let obj3 = new Obj2("test03", 30, "female");
+
+
+    // 자바의 객체 : 변수, 메소드
+    // class Test {
+    //    Integer num;
+    //    void method() {
+    //        System.out.println("method");
+    //    }
+    // }
+    // Test test = new Test();
+    // test.num1 = 10;
+
+  </script>
+</body>
+
+</html>

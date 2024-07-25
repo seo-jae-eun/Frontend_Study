@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #recommand {
+            display: none;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 클릭했을 때 placeholder="검색어를 입력해주세요" -->
+    <!-- 뭔가를 입력했을 때 recommand div가 보여지게 설정 -->
+    검색어 : <input oninput="recommand()" onfocus="search(this)" onfocusout="out(this)" id="search" type="text">
+    <div id="recommand">
+        추천 검색어1, 추천검색어2
+    </div>
+
+    <script>
+        function search(event) {
+            event.placeholder = "검색어를 입력해주세요.";
+            // document.getElementById("search").placeholder = "검색어를 입력해주세요.";
+        }
+        function recommand() {
+            document.getElementById("recommand").style.display = "block";
+        }
+        function out(event) {
+            event.placeholder = "";
+            document.getElementById("recommand").style.display = "none";
+        }
+
+    </script>
+
+</body>
+
+</html>

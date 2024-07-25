@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+</head>
+
+<body>
+  <!-- <div id="test01">추가 전</div>
+  <button onclick="test()">버튼</button> -->
+
+  <div id="test01">
+    <span id="agree">
+      <input type="checkbox" name="agree" value="동의"> 동의
+    </span>
+  </div>
+  <button onclick="test2()">슛</button>
+
+
+  <script>
+    function test() {
+      let imgTag = document.createElement("img");
+      imgTag.src = "../day01-front/포차코.PNG";
+
+      let divTag = document.getElementById("test01");
+
+      divTag.appendChild(imgTag);
+
+    }
+
+    function test2() {
+      let agreeSpanTag = document.getElementById("agree");
+      agreeSpanTag.style.display = "none";
+
+      let inputTag = document.createElement("input");
+      inputTag.type = "text";
+
+      let divTag = document.getElementById("test01");
+
+      divTag.appendChild(inputTag);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="agree-container">
+            <input onchange="checkAll(); agree()" type="checkbox" name="agree"> 모두 동의 (선택 정보 포함) <br><br>
+            <input onchange="agree()" type="checkbox" name="agree"> [필수] 만 14세 이상입니다 <br>
+            <input onchange="agree()" type="checkbox" name="agree"> [필수] 이용약관 동의 <br>
+            <input onchange="agree()" type="checkbox" name="agree"> [필수] 개인정보 수집 및 이용 동의 <br>
+            <input onchange="agree()" type="checkbox" name="agree"> [선택] 마케팅 목적의 개인정보 수집 및 이용 동의 <br>
+            <input onchange="agree()" type="checkbox" name="agree"> [선택] 광고성 정보 수신 동의 <br>
+        </div>
+
+        <div id="signup-container">
+
+        </div>
+    </div>
+
+    <button disabled onclick="next()">계속 진행하기</button>
+
+    <script>
+
+        function next() {
+            // document.getElementById("agree-container").style.display = "none";
+            document.getElementById("agree-container").remove();
+
+            // document.getElementById("container").appendChild();
+            let signupContainer = document.getElementById("signup-container");
+            signupContainer.style.display = "block";
+            signupContainer.innerHTML = '이메일 주소 : <input class="email" type="text" name="email">';
+
+
+        }
+
+
+        function agree() {
+            let agree1 = document.getElementsByName("agree")[1].checked;
+            let agree2 = document.getElementsByName("agree")[2].checked;
+            let agree3 = document.getElementsByName("agree")[3].checked;
+            let agree4 = document.getElementsByName("agree")[4].checked;
+            let agree5 = document.getElementsByName("agree")[5].checked;
+
+            // 모든 체크박스가 체크되었는지 확인
+            if (agree1 && agree2 && agree3 && agree4 && agree5)
+                document.getElementsByName("agree")[0].checked = true;
+            else
+                document.getElementsByName("agree")[0].checked = false;
+
+            // 필수가 전부 체크되었는지 확인
+            if (agree1 && agree2 && agree3) {
+                document.getElementsByTagName("button")[0].disabled = false;
+            } else {
+                document.getElementsByTagName("button")[0].disabled = true;
+            }
+        }
+
+
+        // 모두 체크 또는 모두 해제 처리 함수
+        function checkAll() {
+            let allCheck = document.getElementsByName("agree")[0];
+            if (allCheck.checked) {
+                document.getElementsByName("agree")[1].checked = true;
+                document.getElementsByName("agree")[2].checked = true;
+                document.getElementsByName("agree")[3].checked = true;
+                document.getElementsByName("agree")[4].checked = true;
+                document.getElementsByName("agree")[5].checked = true;
+            } else {
+                document.getElementsByName("agree")[1].checked = false;
+                document.getElementsByName("agree")[2].checked = false;
+                document.getElementsByName("agree")[3].checked = false;
+                document.getElementsByName("agree")[4].checked = false;
+                document.getElementsByName("agree")[5].checked = false;
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        BOM : Browser Object Model 
+        window : 모든 브라우저에서 지원되는 브라우저를 뜻하는 객체
+        window.document.querySelector("h2") == document.querySelector("h2")
+    -->
+    <button onclick="down()">버튼</button>
+    1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>1<br>
+    1<br>
+    1<br>
+    1<br>
+    <button onclick="up()">버튼</button>
+    <button onclick="move()">이동하기</button>
+
+    <script>
+
+        function move() {
+            window.location.href = 'http://www.naver.com';
+        }
+        function down() {
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function up() {
+            window.scrollTo(0, 0);
+        }
+
+
+        // function test() {
+        //     // 현재 스크롤의 위치
+        //     console.log(window.scrollY);
+        //     // body 태그의 세로 길이
+        //     console.log(document.body.scrollHeight);
+        //     // 스크롤 바의 세로 길이
+        //     console.log(window.innerHeight);
+
+        //     if (window.scrollY < document.body.scrollHeight - window.innerHeight) {
+        //         window.scrollTo(0, document.body.scrollHeight);
+
+        //     } else {
+        //         window.scrollTo(0, 0);
+        //     }
+
+        // }
+    </script>
+</body>
+
+</html>

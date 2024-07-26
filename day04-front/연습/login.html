@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <form method="post" action="http://localhost:8080/login"> -->
+    <form onsubmit="login()">
+        이메일 : <input type="text" name="email" id="email-input">
+        비밀번호 : <input type="password" name="password" id="password-input">
+        <button>로그인</button>
+    </form>
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const login = async () => {
+        // 현재 실행되던 이벤트 중지
+        event.preventDefault(); // form 태그 동작을 막음
+
+        let email = document.getElementById("email-input").value;
+        let password = document.getElementById("password-input").value;
+
+        let url = "http://localhost:8080/user/login";
+
+        let userInfo = {
+            email: email,
+            password: password
+        }
+
+        let response = await axios.post(url, userInfo);
+        console.log(response);
+        setCookie('ATOKEN', response.data.accessToken, 1);
+
+
+        // window.location.href = "http://127.0.0.1:5500";
+    }
+
+    function setCookie(name, value, exp) {
+        var date = new Date();
+        date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+        document.cookie =
+            name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
+    }
+
+</script>
+
+</html>

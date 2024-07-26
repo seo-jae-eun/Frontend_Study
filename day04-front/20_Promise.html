@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Promise는 비동기 작업을 관리하기 위한 객체
+    //  Pending(대기): 초기 상태, 아직 작업이 완료되지 않음.
+    //  Fulfilled(이행됨): 작업이 성공적으로 완료됨.
+    //  Rejected(거부됨): 작업이 실패함.
+    let result = null;
+
+    // promise x
+    // function fetchData() {
+    //   setTimeout(
+    //     () => {
+    //       result = "데이터 로드 완료!";
+    //       console.log(result);
+    //     }
+    //     , 5000
+    //   );
+    // }
+
+    function fetchData() {
+      // resolve: 작업이 성공했을 때 실행해줘야하는 코드
+      // reject: 작업이 실패했을 때 실행해줘야하는 코드
+      let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("데이터 로드 완료!"), 5000);
+      });
+
+      // Promise 결과 반환
+      result = promise;
+      console.log(result); // "데이터 로드 완료!" 출력
+    }
+
+    fetchData();
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

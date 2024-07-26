@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        function getCookie(name) {
+            var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+            return value ? value[2] : null;
+        }
+
+
+        let gpbuyList = [{
+            "gpbuyIdx": 0,
+            "gpbuyTitle": "",
+            "gpbuyQuantity": 0
+        }]
+
+        const getGpbuyList = async () => {
+            event.preventDefault(); // form 태그 동작을 막음
+
+            let url = "http://localhost:8080/bid/gpbuy/status-wait/list";
+            let response = await axios.get(url, {
+                params: {
+                    page: 0,
+                    size: 10,
+                    category: 0,
+                    gpbuyTitle: ""
+                },
+                headers: {
+                    Authorization: "Bearer " + getCookie("ATOKEN")
+                }
+            });
+
+            gpbuyList = response.data.result;
+            console.log(gpbuyList);
+        }
+    </script>
+
+</body>
+
+</html>

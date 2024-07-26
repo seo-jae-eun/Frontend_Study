@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #recommend {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 클릭했을 때 placeholder="검색어를 입력해주세요" -->
+    <!-- 뭔가를 입력했을 때 recommend div가 보여지게 설정" -->
+    검색어 : <input onfocus="search1(this)" oninput="search2()" onfocusout="search3(this)" id="search-input" type="text">
+    <div id="recommend">
+        추천 검색어1, 추천 검색어2
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        const search1 = (searchInput) => {
+            // let searchInput = document.getElementById("search-input");
+            searchInput.placeholder = "검색어를 입력해주세요";
+        }
+
+        const search2 = async () => {
+            // 화면에 추천검색어 div가 보이게 설정
+            document.getElementById("recommend").style.display = "block"
+
+            // input 태그에 입력 내용 받아오기            
+            let keyword = document.getElementById("search-input").value;
+
+            // 백엔드에 keyword 전송 할 주소
+            let url = "http://localhost:8080/post/read?word=" + keyword;
+
+            // 백엔드에 데이터 전송 및 응답 받아오기
+            let response = await axios.get(url);
+
+
+            let keywords = "";
+            // 받아온 데이터에서 원하는 내용만 뽑아서
+            for (const data of response.data) {
+                console.log(data.title);
+                keywords = keywords + ", " + data.title
+            }
+            // 천검색어 div 받아온 내용 추가
+            document.getElementById("recommend").innerText = keywords;
+        }
+
+        const search3 = (searchInput) => {
+            // let searchInput = document.getElementById("search-input");
+            searchInput.placeholder = "";
+            document.getElementById("recommend").style.display = "none"
+
+        }
+    </script>
+</body>
+
+</html>

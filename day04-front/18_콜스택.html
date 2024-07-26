@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function a() {
+      console.log("a");
+      b();
+    }
+
+    function b() {
+      console.log("b");
+      c();
+    }
+
+    function c() {
+      console.log("c");
+      d();
+    }
+
+    function d() {
+      console.log("d");
+    }
+
+    a();
+
+    // 비동기 코드
+    console.log("Start");
+
+    setTimeout(() => {
+      console.log("Timeout callback");
+    }, 1000);
+
+    Promise.resolve().then(() => {
+      console.log("Promise callback");
+    });
+
+    console.log("End");
+  </script>
+</body>
+
+</html>

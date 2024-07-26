@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="getCourse()">강의 가져오기</button>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+    let course = {
+        id: 0,
+        name: "",
+        image: "",
+        description: "",
+        price: 0,
+        ordered: false,
+        sections: [
+            {
+                id: 0,
+                name: "",
+                lectures: [
+                    {
+                        id: 0,
+                        name: "",
+                        playTime: 0,
+                        videoUrl: ""
+                    }
+                ]
+            }
+        ]
+    }
+
+    const getCourse = async () => {
+
+        let url = "http://localhost:8080/course/1";
+        let response = await axios.get(url);
+
+        course = response.data.result;
+
+        console.log(course);
+    }
+</script>
+
+</html>

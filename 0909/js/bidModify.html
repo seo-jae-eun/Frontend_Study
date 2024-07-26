@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        function getCookie(name) {
+            var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+            return value ? value[2] : null;
+        }
+
+
+
+        const modify = async () => {
+            let request = {
+                bidIdx: 0,
+                productIdx: 0,
+                bidPrice: 0
+            }
+
+            let url = "http://localhost:8080/bid/modify";
+            let response = await axios.post(url, request, {
+                headers: {
+                    Authorization: "Bearer " + getCookie("ATOKEN")
+                }
+            });
+            console.log(response);
+
+            // 응답 result 없음
+        }
+    </script>
+
+</body>
+
+</html>

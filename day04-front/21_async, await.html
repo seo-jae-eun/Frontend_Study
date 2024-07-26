@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+
+      // async와 await은 비동기 작업을 동기 코드처럼 작성할 수 있게 해주는 자바스크립트의 기능
+      // async와 await를 사용해도 여전히 비동기 작업이지만, 코드가 마치 동기적으로 실행되는 것처럼 작성 가능
+      let result = null;
+
+      async function fetchData() {
+        let promise = new Promise((resolve, reject) => {
+          setTimeout(() => resolve("데이터 로드 완료!"), 5000);
+        });
+
+        // await로 Promise 결과를 기다림
+        let result = await promise;
+        
+        console.log(result); // "데이터 로드 완료!" 출력
+      }
+
+      fetchData();
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>html</li>
+        <li>css</li>
+        <li>js</li>
+        <li>자바</li>
+        <li>스프링</li>
+        <li>DB</li>
+        <li>MSA</li>
+    </ul>
+    <button onclick="change()">색깔바꾸기</button>
+
+
+    <script>
+        // 바꾸기 버튼을 누르면 프론트는 파란색, 백엔드는 초록색으로 바꾸기
+        // 함수는 화살표 함수로 만들기
+        // 반복문은 forEach, map으로 만들기
+        const change = () => {
+            let list = document.getElementsByTagName("li");
+
+            let arrayList = Array.from(list);
+            arrayList.forEach(element => {
+                if (element.innerText === "html" || element.innerText === "css" || element.innerText === "js")
+                    element.style.color = "blue";
+                else
+                    element.style.color = "green";
+            });
+        }
+    </script>
+
+</body>
+
+</html>

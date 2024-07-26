@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function firstTask(callback) {
+        setTimeout(() => {
+          console.log("첫 번째 작업 완료");
+          callback();
+        }, 1000); // 1초 후에 첫 번째 작업 완료
+      }
+
+      function secondTask(callback) {
+        setTimeout(() => {
+          console.log("두 번째 작업 완료");
+          callback();
+        }, 1000); // 1초 후에 두 번째 작업 완료
+      }
+
+      function thirdTask(callback) {
+        setTimeout(() => {
+          console.log("세 번째 작업 완료");
+          callback();
+        }, 1000); // 1초 후에 세 번째 작업 완료
+      }
+
+      firstTask(() => {
+        secondTask(() => {
+          thirdTask(() => {
+            console.log("모든 작업 완료");
+          });
+        });
+      });
+
+      function firstTask() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("첫 번째 작업 완료");
+            resolve();
+          }, 1000); // 1초 후에 첫 번째 작업 완료
+        });
+      }
+
+      function secondTask() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("두 번째 작업 완료");
+            resolve();
+          }, 1000); // 1초 후에 두 번째 작업 완료
+        });
+      }
+
+      function thirdTask() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("세 번째 작업 완료");
+            resolve();
+          }, 1000); // 1초 후에 세 번째 작업 완료
+        });
+      }
+
+      firstTask()
+        .then(() => secondTask())
+        .then(() => thirdTask())
+        .then(() => {
+          console.log("모든 작업 완료");
+        });
+
+      function firstTask() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("첫 번째 작업 완료");
+            resolve();
+          }, 1000); // 1초 후에 첫 번째 작업 완료
+        });
+      }
+
+      function secondTask() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("두 번째 작업 완료");
+            resolve();
+          }, 1000); // 1초 후에 두 번째 작업 완료
+        });
+      }
+
+      function thirdTask() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("세 번째 작업 완료");
+            resolve();
+          }, 1000); // 1초 후에 세 번째 작업 완료
+        });
+      }
+
+      async function executeTasks() {
+        await firstTask();
+        await secondTask();
+        await thirdTask();
+        console.log("모든 작업 완료");
+      }
+
+      // async 함수 호출
+      executeTasks();
+    </script>
+  </body>
+</html>

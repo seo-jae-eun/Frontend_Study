@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="agreeAll" onchange="agreeAll()" type="checkbox" name="agree"> 모두 동의 (선택 정보 포함) <br>
+    <input class="agree" onchange="agree()" type="checkbox" name="agree"> [필수] 만 14세 이상입니다 <br>
+    <input class="agree" onchange="agree()" type="checkbox" name="agree"> [필수] 이용약관 동의 <br>
+    <input class="agree" onchange="agree()" type="checkbox" name="agree"> [필수] 개인정보 수집 및 이용 동의 <br>
+    <input class="agree" onchange="agree()" type="checkbox" name="agree"> [선택] 마케팅 목적의 개인정보 수집 및 이용 동의 <br>
+    <input class="agree" onchange="agree()" type="checkbox" name="agree"> [선택] 광고성 정보 수신 동의 <br>
+    <button disabled>버튼</button>
+
+
+    // 필수가 전부 체크되었는지 확인하는 함수
+    // 모든 체크박스가 체크되었는지 확인하는 함수
+    // 모두 체크 또는 모두 해제 처리 함수
+    // 각 체크 처리 함수
+    <script>
+        const checkRequired = () => {
+            let result = true;
+            let agreeTags = document.getElementsByClassName("agree");
+            for (let i = 0; i < 3; i++) {
+                if (!agreeTags[i].checked) {
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+        const checkAgreeAll = () => {
+            let result = true;
+            let agreeTags = document.getElementsByClassName("agree");
+            for (let i = 0; i < agreeTags.length; i++) {
+                if (!agreeTags[i].checked) {
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+
+
+        function agree() {
+            if (checkRequired()) {
+                document.getElementsByTagName("button")[0].disabled = false;
+            } else {
+                document.getElementsByTagName("button")[0].disabled = true;
+            }
+
+            let agreeAllTag = document.getElementById("agreeAll");
+            if (checkAgreeAll()) {
+                agreeAllTag.checked = true;
+            } else {
+                agreeAllTag.checked = false;
+            }
+        }
+
+
+        function agreeAll() {
+            let agreeAllTag = document.getElementById("agreeAll");
+            let agreeTags = document.getElementsByClassName("agree");
+            if (agreeAllTag.checked) {
+                for (let i = 0; i < agreeTags.length; i++) {
+                    agreeTags[i].checked = true;
+
+                }
+                document.getElementsByTagName("button")[0].disabled = false;
+            } else {
+                for (let i = 0; i < agreeTags.length; i++) {
+                    agreeTags[i].checked = false;
+                }
+                document.getElementsByTagName("button")[0].disabled = true;
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

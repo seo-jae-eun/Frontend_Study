@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const numbers = [1, 2, 3, 4, 5];
+
+    // 인덱스 번호가 필요하면 매개 변수로 추가
+    numbers.forEach((number, index) => {
+      console.log(number);
+      console.log(index);
+    })
+
+    // forEach
+    //  배열의 각 요소에 대해 주어진 함수를 실행
+    //  반환값 없음
+    let forEachResult = numbers.forEach(
+      (number) => {
+        console.log(number);
+        return number;
+      }
+    );
+
+    console.log("forEachResult : " + forEachResult);
+    // map
+    //  배열의 각 요소를 변형하여 새로운 배열을 생성
+    //  새로운 배열을 반환
+    let mapResult = numbers.map(
+      (number) => {
+        console.log(number + 1);
+        return number + 1;
+      }
+    );
+
+    mapResult = numbers.map(
+      (number, idx) => {
+        let result = number * 2;
+        return result;
+      }
+    );
+
+    console.log("mapResult : " + mapResult);
+  </script>
+</body>
+
+</html>

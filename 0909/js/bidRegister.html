@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        function getCookie(name) {
+            var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+            return value ? value[2] : null;
+        }
+
+
+        let bidInfo = {
+            bidIdx: 0
+        }
+
+        const register = async () => {
+            let request = {
+                productIdx: 0,
+                gpbuyIdx: 0,
+                bidPrice: 0
+            }
+
+            let url = "http://localhost:8080/bid/register";
+            let response = await axios.post(url, request, {
+                headers: {
+                    Authorization: "Bearer " + getCookie("ATOKEN")
+                }
+            });
+            console.log(response);
+
+            bidInfo = response.data.result;
+            console.log(bidInfo);
+        }
+    </script>
+
+</body>
+
+</html>

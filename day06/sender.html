@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sender</title>
+</head>
+
+<body>
+
+    <video autoplay id="videoElement"></video>
+    <button id="startBtn" onclick="start()">시작</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+
+        async function start() {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            document.getElementById("videoElement").srcObject = stream;
+
+
+            const peer = createPeer();
+            stream.getTracks().forEach((track) => peer.addTrack(track, stream));
+        }
+
+        function createPeer() {
+            // 공인 IP를 알아옴
+            const servers = {
+                iceServers: [
+                    {
+                        urls: 'stun:stun.l.google.com:19302'
+                    },
+                    {
+                        urls: "turn:192.168.0.124:3478",
+                        username: "testuser",
+                        credential: "qwer1234"
+                    }
+                ]
+            };
+
+            const peer = new RTCPeerConnection(servers);
+
+            // 내 SDP 정보를 다른 클라이언트에게 보내야할 때 실행되는 이벤트, ex) 내 SDP 정보가 변경됐을 때
+            peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
+
+            // 다른 클라이언트가 접속할 내 컴퓨터의 IP주소 후보
+            // peer.onicecandidate = (event) => {
+            //     if (event.candidate) {
+            //         console.log(event.candidate);
+            //     }
+            // };
+
+            return peer;
+        }
+
+        // 내 SDP를 백엔드 서버에 보내는 함수
+        async function handleNegotiationNeededEvent(peer) {
+            // type이 offer인 SDP 정보 생성
+            const offer = await peer.createOffer();
+
+            // 내 peer에 내 SDP 정보를 등록
+            await peer.setLocalDescription(offer);
+
+            // 서버에 보낼 데이터
+            const data = {
+                sdp: peer.localDescription
+            };
+
+            // 서버에 내 SDP 정보 전송
+            const result = await axios.post("/api/broadcast", data);
+
+            // 서버로부터 받은 서버의 SDP 정보(문자열)를 RTCSessionDescription 객체로 생성
+            const serverSdp = new RTCSessionDescription(result.data.sdp);
+            // 내 peer에 서버의 SDP 등록
+            peer.setRemoteDescription(serverSdp);
+        }
+    </script>
+
+</body>
+
+</html>

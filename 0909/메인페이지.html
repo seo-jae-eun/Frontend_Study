@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상품</title>
-    <link rel="shortcut icon" href="favicon.ico">
+    <title>번개장터</title>
+    <link rel="shortcut icon" href="images/market/favicon.ico">
 
     <!--아이콘-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -21,13 +21,10 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-
     <!--css-->
     <link rel="stylesheet" href="css/market/common.css">
     <link rel="stylesheet" href="css/market/index.css">
     <link rel="stylesheet" href="css/market/join.css">
-    <!-- 상세페이지 CSS -->
-    <link rel="stylesheet" href="css/goods/goods_product_detail.css">
 
     <!-- js -->
     <script src="js/market/jquery-3.6.0.min.js"></script>
@@ -72,7 +69,7 @@
                     <div class="row justify-content-start">
                         <div class="col-3 header_logo">
                             <h1 class="hidden">로고</h1>
-                            <a href="index.html">
+                            <a href="">
                                 <img src="images/market/logo.svg" alt="번개장터 로고">
                             </a>
                         </div>
@@ -83,7 +80,7 @@
                             </div>
                         </div>
                         <div class="col-1 b_h_left_menu">
-                            <a href="goods_selling_form.html">
+                            <a href="공구등록페이지.html">
                                 <img src="images/market/sell.png" alt="판매하기">
                                 공구등록
                             </a>
@@ -102,7 +99,7 @@
                             <img id="menu" src="images/market/hamburger.png" alt="메뉴">
                         </div>
                         <div class="col-md-4 sell_center">
-
+                    
                         </div>
                         <!-- 메뉴 호버 -->
                         <div id="test_area">
@@ -127,126 +124,168 @@
             </div>
         </div>
         <!-- main_content 영역 -->
-        <div id="wrapper">
-            <!-- main_content 영역 -->
-            <div id="main_content">
-                <!-- detail_content -->
-                <div id="detail_content">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col detail_content_img">
-                                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="images/goods_ex.jpg" class="d-block w-100" alt="상품 사진1">
-                                        </div>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
+        <div id="main_content">
+            <!--상품 영역-->
+            <section class="main_goods">
+                <h2>오늘의 공구 추천</h2>
+                <div class="goods_wrap">
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                                <img src="images/market/thunder_pay_mark.svg" alt="번개페이">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
                                 </div>
                             </div>
-                            <div class="col detail_content_info">
-                                <h2>상품명</h2>
-                                <p>00,000<span>원</span></p>
-                                <hr>
-                                <div id="detail_content_info_mid">
-                                    <p>
-                                        <img src="images/goods/time.png" alt="지난 시간">
-                                        <span>0일 전</span>
-                                    </p>
-                                </div>
-                                <div id="detail_content_info_state">
-                                    <p>
-                                        <span>· 카테고리</span>
-                                        <span>??</span>
-                                    </p>
-                                    <p>
-                                        <span>· 남은수량/목표수량</span>
-                                        <span>교환불가능</span>
-                                    </p>
-                                    <p>
-                                        <span>· 업체명</span>
-                                        <span>이름</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <div class="container text-center detail_content_info_btn">
-                                        <div class="row g-2">
-                                            <div class="col-4">
-                                                <div class="p-3 info_btn1">
-                                                    <img src="images/goods/w_heart.svg" alt="찜"> 찜 <span>0</span>
-                                                </div>
-                                            </div>
-                                            <script>
-                                                function changeQuantity(amount) {
-                                                    var input = document.getElementById('quantityInput');
-                                                    var currentValue = parseInt(input.value);
-                                                    var minValue = parseInt(input.min);
-                                                    var maxValue = parseInt(input.max);
-
-                                                    var newValue = currentValue + amount;
-                                                    if (newValue >= minValue && newValue <= maxValue) {
-                                                        input.value = newValue;
-                                                    }
-                                                }
-                                            </script>
-                                            <div class="col-auto">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <button class="btn btn-outline-secondary" type="button"
-                                                            onclick="changeQuantity(-1)">-</button>
-                                                    </div>
-                                                    <input class="form-control text-center" value="1" min="1" max="984"
-                                                        id="quantityInput">
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-outline-secondary" type="button"
-                                                            onclick="changeQuantity(1)">+</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="p-3 info_btn3">바로구매</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="goods">
+                        <a href="goods_product_detail.html">
+                            <div class="goods_image">
+                                <img src="images/goods_ex.jpg" width="245" height="245" alt="상품 이미지">
+                            </div>
+                            <div class="goods_info">
+                                <p class="goods_title">상품명</p>
+                                <div class="goods_price_date">
+                                    <span class="goods_price">가격</span>
+                                    <span class="goods_date_before">4일 전</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <!-- // detail_content -->
-                <hr>
-
-                <!-- goods_info -->
-                <div id="goods_info">
-                    <div class="container text-center info_area">
-                        <div class="info_content">
-                            <div>
-                                <p>
-                                    상품정보
-                                </p>
-                            </div>
-                            <div>
-                                상품내용 입력란입니다.<br>
-                                테스트메시지<br>
-                            </div>
-                        </div>
-                        <img src="http://image.toast.com/aaaaab/ticketlink/TKL_4/info_0718.jpg">
-                    </div>
-                </div>
-                <!-- // goods_info -->
-                <!-- // main_content 영역 -->
-
-
-            </div>
+            </section>
         </div>
         <!-- // main_content 영역 -->
         <!-- footer 영역 -->

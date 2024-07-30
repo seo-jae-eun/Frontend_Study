@@ -17,8 +17,7 @@
     <div id="__next">
         <div class="memberContainer">
             <div class="header">
-                <div class="headerInner"><a href="https://www.interpark.com" class="headerLogo"><span
-                            class="blind">0909</span></a>
+                <div class="headerInner"><a href="/메인페이지.html" class="headerLogo"><span class="blind">0909</span></a>
                     <div class="headerTitle">업체회원 정보입력</div>
                 </div>
             </div>
@@ -98,21 +97,7 @@
                         <div class="uInputArea">
                             <div class="col">
                                 <div class="uInput"><label for="inputName">생년월일</label>
-                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
-                                            tabindex="4" value=""><button type="button" class="btnDel"
-                                            aria-label="삭제"></button></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="uErrorText" style="display: block;"></div>
-                    </div>
-
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput"><label for="inputName">성별</label>
-                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
+                                    <div class="inputBox"><input type="date" id="inputName" class="inputText"
                                             tabindex="4" value=""><button type="button" class="btnDel"
                                             aria-label="삭제"></button></div>
                                 </div>
@@ -124,8 +109,44 @@
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputName">주소</label>
-                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
+                                <div class="uInput">
+                                    <label for="genderMale">성별</label>
+                                    <div class="inputBox radioBox">
+                                        <input type="radio" id="genderMale" name="gender" value="male" tabindex="4">
+                                        <label for="genderMale">남성</label>
+                                        <input type="radio" id="genderFemale" name="gender" value="female" tabindex="5">
+                                        <label for="genderFemale">여성</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uErrorText" style="display: block;"></div>
+                    </div>
+
+
+
+                    <div class="uBlock">
+                        <div class="uInputArea">
+                            <div class="col">
+                                <div class="uInput"><label for="inputPostCode">우편번호</label>
+                                    <div class="inputBox"><input type="text" id="inputPostCode" class="inputText"
+                                            tabindex="2" value=""></div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="uBtnArea"><button type="button" class="uBtn"
+                                        onclick="execDaumPostcode()">우편번호 찾기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uErrorText" style="display: block;"></div>
+                    </div>
+
+                    <div class="uBlock">
+                        <div class="uInputArea">
+                            <div class="col">
+                                <div class="uInput"><label for="inputAddress">주소</label>
+                                    <div class="inputBox"><input type="text" id="inputAddress" class="inputText"
                                             tabindex="4" value=""><button type="button" class="btnDel"
                                             aria-label="삭제"></button></div>
                                 </div>
@@ -147,6 +168,111 @@
                         <div class="uErrorText" style="display: block;"></div>
                     </div>
 
+
+                    <div class="certBox">
+                        <div class="uBlock">
+                            <div class="uInputArea">
+                                <div class="col">
+                                    <div class="uInput"><label for="inputName">사업자등록번호</label>
+                                        <div class="inputBox"><input type="text" id="inputName" class="inputText"
+                                                tabindex="4" value="">
+                                            <button type="button" class="btnDel" aria-label="삭제"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uErrorText" style="display: block;"></div>
+                        </div>
+
+                        <div class="uBlock">
+                            <div class="uInputArea">
+                                <div class="col">
+                                    <div class="uInput"><label for="inputName">대표자명</label>
+                                        <div class="inputBox"><input type="text" id="inputName" class="inputText"
+                                                tabindex="4" value="">
+                                            <button type="button" class="btnDel" aria-label="삭제"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uErrorText" style="display: block;"></div>
+                        </div>
+
+                        <div class="uBlock">
+                            <div class="uInputArea">
+                                <div class="col">
+                                    <div class="uInput"><label for="inputName">개업일자</label>
+                                        <div class="inputBox"><input type="date" id="inputName" class="inputText"
+                                                tabindex="4" value="">
+                                            <button type="button" class="btnDel" aria-label="삭제"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uErrorText" style="display: block;"></div>
+                        </div>
+                        <div class="uBtnArea"><button type="button" class="uBtn borderType">사업자등록번호 인증하기 (필수)</button>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="uBlock">
+                        <div class="uInputArea">
+                            <div class="col">
+                                <div class="uInput"><label for="inputName">통신판매업신고번호</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uErrorText" style="display: block;"></div>
+                    </div>
+
+
+                    <div class="uBlock">
+                        <div class="uInputArea">
+                            <div class="col">
+                                <div class="uInput"><label for="inputName">은행명</label>
+                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
+                                            tabindex="4" value="">
+                                        <button type="button" class="btnDel" aria-label="삭제"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uErrorText" style="display: block;"></div>
+                    </div>
+
+
+                    <div class="uBlock">
+                        <div class="uInputArea">
+                            <div class="col">
+                                <div class="uInput"><label for="inputName">예금주명</label>
+                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
+                                            tabindex="4" value="">
+                                        <button type="button" class="btnDel" aria-label="삭제"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uErrorText" style="display: block;"></div>
+                    </div>
+
+
+                    <div class="uBlock">
+                        <div class="uInputArea">
+                            <div class="col">
+                                <div class="uInput"><label for="inputName">계좌번호</label>
+                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
+                                            tabindex="4" value="">
+                                        <button type="button" class="btnDel" aria-label="삭제"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uErrorText" style="display: block;"></div>
+                    </div>
 
 
 
@@ -180,17 +306,8 @@
                             <div class="certifyTime" style="display: none;">인증유효시간 <span classq="time">00:00</span>
                             </div>
                         </div>
-                        <div class="uBlock checkBlock">
-                            <div class="uCheckbox"><label><input type="checkbox"><span class="text">SMS, 이메일로 상품 및 이벤트
-                                        정보를
-                                        받겠습니다.(선택)</span></label></div>
-                            <div class="uCheckbox"><label><input type="checkbox"><span class="text">14세
-                                        미만입니다.</span></label></div>
-                            <div class="uErrorText" style="display: none;">14세 미만 가입시 법정대리인 동의 필수 입니다.</div>
-                        </div>
                         <div class="uBlock">
-                            <p class="blockText">만 14세 미만 회원은 법정대리인(부모님) 동의를 받은 경우만 회원가입이 가능합니다.
-                                <br>가입 후 이메일 인증해야 로그인 가능함 ㅎ_ㅎ
+                            <p class="blockText">※ 가입 후 이메일 인증해야 로그인 가능함 ㅎ_ㅎ
                             </p>
                         </div>
                         <div class="uBlock" style="display: none;">
@@ -235,9 +352,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ubtnArea">
-                            <div class="col"><button type="button" class="uBtn point" disabled="">가입완료</button></div>
-                        </div>
+                        <a href="/메인페이지.html">
+                            <div class="ubtnArea">
+                                <div class="col"><button type="button" class="uBtn point" disabled="">가입완료</button>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="footer">
@@ -269,6 +389,18 @@
             <script language="javascript" src="https://analysis.adinsight.co.kr/emnet/trs_esc.js"></script>
 
 
+
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+            <script>
+                function execDaumPostcode() {
+                    new daum.Postcode({
+                        oncomplete: function (data) {
+                            document.getElementById('inputAddress').value = data.address; // 주소 입력 필드
+                            document.getElementById('inputPostCode').value = data.zonecode; // 우편번호 입력 필드
+                        }
+                    }).open();
+                }
+            </script>
 
         </div>
         <script type="text/javascript"

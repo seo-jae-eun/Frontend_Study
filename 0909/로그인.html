@@ -9,76 +9,9 @@
   <link rel="stylesheet" href="header.css" type="text/css">
   <link rel="stylesheet" href="login.css" type="text/css">
 
-
-
 </head>
 
 <body id="">
-  <input type="hidden" id="activeProfile" name="activeProfile" value="RELEASE">
-  <input type="hidden" id="isMdShopPc" value="N">
-
-
-  <script src="//www.interpark.com/static/js/egs/egs_common.js"></script>
-  <script>
-    /* GA4 공통파라미터 */
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      'user_id': undefined,
-      'category_1': '공통',
-      'category_2': '공통',
-      'category_3': '공통',
-      'type': 'others',
-      'version': '190001',
-      'object_id': '로그인'
-    });
-
-    /* 기존 GTM UA 파라미터 - 변수 유지하기 위해 세팅 방식 변경 향후 ua 제거시 제거*/
-    var _iegs_guif = __egsUtil.cookies.get("IEGS_GUIF").split('$') || [];
-    var grdNM = '';
-    switch (_iegs_guif[0]) {
-      case '01': grdNM = 'Welcome'; break;
-      case '10': grdNM = 'Welcome'; break;
-      case '11': grdNM = 'Family'; break;
-      case '12': grdNM = 'VIP'; break;
-      case '13': grdNM = 'VVIP'; break;
-    }
-
-    window.dataLayer.push({
-      'uid': (__egsUtil.cookies.get("interparkID")) ? __egsUtil.cookies.get("interparkID") : '',
-      'CD2': _iegs_guif[1],
-      'CD3': '0A' + _iegs_guif[2] + 'P',
-      'CD5': "Welcome",
-      'CD1': '',
-      'CD17': '공통',
-      'CD18': '로그인',
-      'CD19': '',
-      'CD20': '',
-      'Depth1': '공통',
-      'Depth2': '로그인'
-    });
-  </script>
-  <script>
-    /* GA4 공통파라미터 gtm.strart */
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MPP5PKHJ');
-
-    /* GTM-UA 공통파라미터 gtm.strart : 향후 ua제거시 제거 */
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l !== 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-W4M7TGG');
-
-  </script>
 
 
   <div id="container" class="container login">
@@ -86,9 +19,9 @@
     </header>
     <div class="loginWrap">
       <div class="loginLogo">
-        <a href="https://www.interpark.com/">
+        <a href="/메인페이지.html">
           <h1 class="logo">
-            <span>interpark</span>
+            <span>0909</span>
           </h1>
         </a>
       </div>
@@ -98,6 +31,7 @@
         <input type="hidden" id="LOGIN_TP" name="LOGIN_TP" value="6000">
         <input type="hidden" id="fromSVC" name="fromSVC" value="tour">
         <input type="hidden" id="bizId" name="bizId" value="60">
+
         <div class="loginInner">
           <div class="loginForm">
             <div class="inputBox">
@@ -162,7 +96,7 @@
                 <a id="findPwd" href="#">비밀번호 찾기</a>
               </li> -->
               <li>
-                <a id="join" href="#">회원가입</a>
+                <a id="join" href="/회원가입버튼.html">회원가입</a>
               </li>
             </ul>
           </div>

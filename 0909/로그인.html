@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="header.css" type="text/css">
   <link rel="stylesheet" href="login.css" type="text/css">
 
+
 </head>
 
 <body id="">
@@ -32,8 +33,13 @@
         <input type="hidden" id="fromSVC" name="fromSVC" value="tour">
         <input type="hidden" id="bizId" name="bizId" value="60">
 
+
         <div class="loginInner">
           <div class="loginForm">
+            <div class="buttonGroup">
+              <button type="button" class="active" onclick="setActive(this, 'basic')">일반</button>
+              <button type="button" onclick="setActive(this, 'seller')">업체</button>
+            </div>
             <div class="inputBox">
               <div class="inputStyle inputId">
                 <label>
@@ -100,7 +106,7 @@
               </li>
             </ul>
           </div>
-          <div class="snsLogin">
+          <div id="snsLogin" class="snsLogin">
             <ul>
               <li id="kakao_li">
                 <a href="#" class="kakao" id="openid_kakao">
@@ -124,59 +130,21 @@
       </div>
     </div>
   </div>
-  <form name="frmUserDorm" method="post" action="https://incorp.interpark.com/member/checkCert.do" ;="">
-    <input type="hidden" name="_method" value="totalCertify">
-    <input type="hidden" name="mbrId" value="">
-    <input type="hidden" name="mbrInfo" value="">
-    <input type="hidden" name="type" value="userDorm">
-  </form>
-  <script src="/resources/js/login/header_ui.js?t=1721715546"></script>
-  <script src="/resources/js/login/login.common.js?t=1721715546"></script>
-  <script src="/resources/js/login/login.js?t=1721715546"></script>
 
-  <script src="/resources/js/login/voice.js?t=1721715546"></script>
-  <script src="/resources/js/jquery/jquery.ajaxSubmit.min.js"></script>
-  <script type="text/javascript">
-    function blockIdPopup(recertMthd, mbrId, mbrInfo) {
-      const errorMessage = $('.errorMessage').find('.message');
+  <script>
+    function setActive(button, option) {
+      let buttons = document.querySelectorAll('.buttonGroup button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
 
-      if (recertMthd === "05" || recertMthd === "07") {
-        errorMessage.html('로그인이 제한된 계정입니다.\\n관련 문의는 고객센터(1544-1555)를 통해 연락주세요!').show();
-      } else if (recertMthd === "08") {
-        window.location.href = `https://incorp.interpark.com/member/login.do?_method=loginLimitDupleCert&mbrId=${encodeURIComponent(mbrId)}&mbrInfo=${encodeURIComponent(mbrInfo)}`;;
+      let snsLogin = document.getElementById('snsLogin');
+      if (option === 'basic') {
+        snsLogin.style.display = 'flex';
       } else {
-        const popUrl = `https://incorp.interpark.com/member/login.do?_method=loginlimitPopup&mbrId=${encodeURIComponent(mbrId)}&mbrInfo=${encodeURIComponent(mbrInfo)}`;
-        errorMessage.html('비정상적인 접속 시도로 계정 보호를 위해 로그인 잠김처리 되었습니다.').show();
-        window.open(popUrl, 'userDormPopup', 'width=320,height=260,scrollbars=yes');
+        snsLogin.style.display = 'none';
       }
     }
   </script>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <!-- GTM-GA4 //-->
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPP5PKHJ" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe>
-    <!-- GTM-UA //-->
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4M7TGG" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-
-  <script type="text/javascript" id="" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-  <div style="display: none; visibility: hidden;">
-
-    <script
-      type="text/javascript">var TRS_AIDX = 9308, TRS_DOMAIN = "interpark.com", TRS_PROTOCOL = document.location.protocol; document.writeln(); var TRS_URL = TRS_PROTOCOL + "//" + ("https:" == TRS_PROTOCOL ? "analysis.adinsight.co.kr" : "adlog.adinsight.co.kr") + "/emnet/trs_esc.js"; document.writeln("\x3cscript language\x3d'javascript' src\x3d'" + TRS_URL + "'\x3e\x3c/script\x3e");</script>
-    <script language="javascript" src="https://analysis.adinsight.co.kr/emnet/trs_esc.js"></script>
-
-
-
-  </div>
-  <script type="text/javascript"
-    id="">try { appboy.getUser().setCustomUserAttribute("PC_PageCategory", "공통_로그인") } catch (a) { };</script>
-  <script type="text/javascript" id="">kakaoPixel("8709382144194201477").pageView();</script>
-
 
 </body>
 

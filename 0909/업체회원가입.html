@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="regist.css" type="text/css">
 </head>
 
-<body><noscript>
+<body>
+    <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPP5PKHJ&gtm_cookies_win=x" height="0" width="0"
             style="display:none;visibility:hidden" id="tag-manager"></iframe></noscript><noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4M7TGG&gtm_auth=&gtm_preview=&gtm_cookies_win=x"
-            height="0" width="0" style="display:none;visibility:hidden" id="tag-manager"></iframe></noscript>
+            height="0" width="0" style="display:none;visibility:hidden" id="tag-manager"></iframe>
+    </noscript>
     <div id="__next">
         <div class="memberContainer">
             <div class="header">
@@ -33,14 +35,18 @@
                                 </div>
                             </div>
                             <div class="col selectCol">
-                                <div class="uSelectBox"><label><select tabindex="6">
+                                <div class="uSelectBox">
+                                    <label>
+                                        <select tabindex="6">
                                             <option value="direct">직접입력</option>
                                             <option value="naver.com">@naver.com</option>
                                             <option value="hanmail.net">@hanmail.net</option>
                                             <option value="gmail.com">@gmail.com</option>
                                             <option value="nate.com">@nate.com</option>
                                             <option value="hotmail.com">@hotmail.com</option>
-                                        </select></label></div>
+                                        </select>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="uErrorText" style="display: block;"></div>
@@ -54,13 +60,15 @@
                         <div class="uInputArea">
                             <div class="col">
                                 <div class="uInput"><label for="inputPw">비밀번호</label>
-                                    <div class="inputBox"><input type="password" id="inputPw" class="inputText"
-                                            placeholder="8~12자 영문, 숫자, 특수문자" tabindex="2" value=""><button type="button"
-                                            class="btnDel" aria-label="삭제"></button></div>
+                                    <div class="inputBox"><input type="password" id="inputPw" class="inputText" placeholder="8~12자 영문, 숫자, 특수문자" tabindex="2" value="">
+                                            <button type="button" class="btnDel" aria-label="삭제"></button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="uBtnArea"><button type="button" class="uBtn">보기</button></div>
+                                <div class="uBtnArea">
+                                    <button type="button" class="uBtn" id="togglePwBtn">보기</button>
+                                </div>
                             </div>
                         </div>
                         <div class="uErrorText" style="display: block;"></div>
@@ -68,14 +76,17 @@
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputPwConfirm">비밀번호 확인</label>
-                                    <div class="inputBox"><input type="password" id="inputPwConfirm" class="inputText"
-                                            placeholder="8~12자 영문, 숫자, 특수문자" tabindex="3" value=""><button type="button"
-                                            class="btnDel" aria-label="삭제"></button></div>
+                                <div class="uInput">
+                                    <label for="inputPwConfirm">비밀번호 확인</label>
+                                    <div class="inputBox">
+                                        <input type="password" id="inputPwConfirm" class="inputText" placeholder="8~12자 영문, 숫자, 특수문자" tabindex="3" value="">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="uBtnArea"><button type="button" class="uBtn">보기</button></div>
+                                <div class="uBtnArea">
+                                    <button type="button" class="uBtn" id="togglePwConfirmBtn">보기</button>
+                                </div>
                             </div>
                         </div>
                         <div class="uErrorText" style="display: block;"></div>
@@ -83,27 +94,27 @@
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputName">이름</label>
-                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
-                                            tabindex="4" value=""><button type="button" class="btnDel"
-                                            aria-label="삭제"></button></div>
+                                <div class="uInput">
+                                    <label for="inputName">이름</label>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputName" class="inputText" tabindex="4" value="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
                     </div>
 
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputName">생년월일</label>
-                                    <div class="inputBox"><input type="date" id="inputName" class="inputText"
-                                            tabindex="4" value=""><button type="button" class="btnDel"
-                                            aria-label="삭제"></button></div>
+                                <div class="uInput">
+                                    <label for="inputBirth">생년월일</label>
+                                    <div class="inputBox">
+                                        <input type="date" id="inputBirth" class="inputText" tabindex="4" value="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
                     </div>
 
                     <div class="uBlock">
@@ -120,17 +131,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
                     </div>
-
-
 
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputPostCode">우편번호</label>
-                                    <div class="inputBox"><input type="text" id="inputPostCode" class="inputText"
-                                            tabindex="2" value=""></div>
+                                <div class="uInput">
+                                    <label for="inputPostCode">우편번호</label>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputPostCode" class="inputText" tabindex="2" value="">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col">
@@ -139,33 +149,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
                     </div>
 
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
                                 <div class="uInput"><label for="inputAddress">주소</label>
-                                    <div class="inputBox"><input type="text" id="inputAddress" class="inputText"
-                                            tabindex="4" value=""><button type="button" class="btnDel"
-                                            aria-label="삭제"></button></div>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputAddress" class="inputText" tabindex="4" value="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
                     </div>
 
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputName">상세주소</label>
-                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
-                                            tabindex="4" value=""><button type="button" class="btnDel"
-                                            aria-label="삭제"></button></div>
+                                <div class="uInput">
+                                    <label for="inputDetailAddr">상세주소</label>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputDetailAddr" class="inputText" tabindex="4" value="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
                     </div>
 
 
@@ -173,184 +181,109 @@
                         <div class="uBlock">
                             <div class="uInputArea">
                                 <div class="col">
-                                    <div class="uInput"><label for="inputName">사업자등록번호</label>
-                                        <div class="inputBox"><input type="text" id="inputName" class="inputText"
-                                                tabindex="4" value="">
-                                            <button type="button" class="btnDel" aria-label="삭제"></button>
+                                    <div class="uInput">
+                                        <label for="inputResNum">사업자등록번호</label>
+                                        <div class="inputBox">
+                                            <input type="text" id="inputResNum" class="inputText" tabindex="4" value="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="uErrorText" style="display: block;"></div>
                         </div>
 
                         <div class="uBlock">
                             <div class="uInputArea">
                                 <div class="col">
-                                    <div class="uInput"><label for="inputName">대표자명</label>
-                                        <div class="inputBox"><input type="text" id="inputName" class="inputText"
-                                                tabindex="4" value="">
-                                            <button type="button" class="btnDel" aria-label="삭제"></button>
+                                    <div class="uInput">
+                                        <label for="inputCEOName">대표자명</label>
+                                        <div class="inputBox">
+                                            <input type="text" id="inputCEOName" class="inputText" tabindex="4" value="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="uErrorText" style="display: block;"></div>
                         </div>
 
                         <div class="uBlock">
                             <div class="uInputArea">
                                 <div class="col">
-                                    <div class="uInput"><label for="inputName">개업일자</label>
-                                        <div class="inputBox"><input type="date" id="inputName" class="inputText"
-                                                tabindex="4" value="">
-                                            <button type="button" class="btnDel" aria-label="삭제"></button>
+                                    <div class="uInput"><label for="inputOpenDate">개업일자</label>
+                                        <div class="inputBox">
+                                            <input type="date" id="inputOpenDate" class="inputText"tabindex="4" value="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="uErrorText" style="display: block;"></div>
                         </div>
                         <div class="uBtnArea"><button type="button" class="uBtn borderType">사업자등록번호 인증하기 (필수)</button>
                         </div>
-
                     </div>
-
-
-
 
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputName">통신판매업신고번호</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="uErrorText" style="display: block;"></div>
-                    </div>
-
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput"><label for="inputName">은행명</label>
-                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
-                                            tabindex="4" value="">
-                                        <button type="button" class="btnDel" aria-label="삭제"></button>
+                                <div class="uInput"><label for="inputMosNum">통신판매업번호</label>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputMosNum" class="inputText" tabindex="4" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
+                    </div>
+
+                    <div class="uBlock">
+                        <div class="uInputArea">
+                            <div class="col">
+                                <div class="uInput"><label for="inputBankName">은행명</label>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputBankName" class="inputText" tabindex="4" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputName">예금주명</label>
-                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
-                                            tabindex="4" value="">
-                                        <button type="button" class="btnDel" aria-label="삭제"></button>
+                                <div class="uInput">
+                                    <label for="inputDepoName">예금주명</label>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputDepoName" class="inputText" tabindex="4" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
                     </div>
 
 
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputName">계좌번호</label>
-                                    <div class="inputBox"><input type="text" id="inputName" class="inputText"
-                                            tabindex="4" value="">
-                                        <button type="button" class="btnDel" aria-label="삭제"></button>
+                                <div class="uInput">
+                                    <label for="inputAccount">계좌번호</label>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputAccount" class="inputText" tabindex="4" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
                     </div>
-
-
-
-
                     <div class="uBlock">
                         <div class="uInputArea">
                             <div class="col">
-                                <div class="uInput"><label for="inputCellphone">휴대폰</label>
-                                    <div class="inputBox"><input type="text" id="inputCellphone" class="inputText"
-                                            placeholder="010 1234 5678" tabindex="7" value=""><button type="button"
-                                            class="btnDel" aria-label="삭제"></button></div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="uBlock" style="display: none;">
-                            <div class="uInputArea">
-                                <div class="col">
-                                    <div class="uInput"><label for="inputCertifyNum">인증번호</label>
-                                        <div class="inputBox"><input type="text" id="inputCertifyNum" class="inputText"
-                                                tabindex="8" value=""><button type="button" class="btnDel"
-                                                aria-label="삭제"></button></div>
+                                <div class="uInput">
+                                    <label for="inputCellphone">휴대폰</label>
+                                    <div class="inputBox">
+                                        <input type="text" id="inputCellphone" class="inputText" placeholder="010 1234 5678" tabindex="7" value="">
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="uBtnArea"><button type="button"
-                                            class="uBtn borderType">재발송</button><button type="button"
-                                            class="uBtn borderType">확인</button></div>
-                                </div>
-                            </div>
-                            <div class="certifyTime" style="display: none;">인증유효시간 <span classq="time">00:00</span>
                             </div>
                         </div>
+
                         <div class="uBlock">
-                            <p class="blockText">※ 가입 후 이메일 인증해야 로그인 가능함 ㅎ_ㅎ
-                            </p>
-                        </div>
-                        <div class="uBlock" style="display: none;">
-                            <div class="uInputArea">
-                                <div class="col">
-                                    <div class="uInput"><label for="inputAgreeName">이름</label>
-                                        <div class="inputBox"><input type="text" id="inputAgreeName" class="inputText"
-                                                value=""><button type="button" class="btnDel" aria-label="삭제"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="uErrorText" style="display: block;"></div>
-                        </div>
-                        <div class="uBlock" style="display: none;">
-                            <div class="uInputArea emailType">
-                                <div class="col">
-                                    <div class="uInput"><label for="inputAgreeEmail">이메일</label>
-                                        <div class="inputBox"><input type="text" id="inputAgreeEmail" class="inputText"
-                                                value=""></div>
-                                    </div>
-                                </div>
-                                <div class="col selectCol">
-                                    <div class="uSelectBox"><label><select>
-                                                <option value="direct">직접입력</option>
-                                                <option value="naver.com">@naver.com</option>
-                                                <option value="hanmail.net">@hanmail.net</option>
-                                                <option value="gmail.com">@gmail.com</option>
-                                                <option value="nate.com">@nate.com</option>
-                                                <option value="hotmail.com">@hotmail.com</option>
-                                            </select></label></div>
-                                </div>
-                            </div>
-                            <div class="uErrorText" style="display: block;"></div>
-                        </div>
-                        <div class="uBlock agreeBlock" style="display: none;">
-                            <div class="uInputArea">
-                                <div class="col"><span class="label">가입동의받기</span></div>
-                                <div class="col">
-                                    <div class="uBtnArea"><button type="button" class="uBtn borderType sType">법정대리인 본인
-                                            인증</button></div>
-                                </div>
-                            </div>
+                            <p class="blockText">※ 가입 후 이메일 인증해야 로그인 가능함 ㅎ_ㅎ</p>
                         </div>
                         <a href="/메인페이지.html">
                             <div class="ubtnArea">
@@ -365,70 +298,38 @@
                 </div>
             </div>
         </div>
-        <script id="__NEXT_DATA__"
-            type="application/json">{"props":{"pageProps":{},"deviceCtx":{"userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","isMobile":false,"isPad":null,"isApp":false,"mobileOS":"ETC","iosOSVer":"","query":{"join_site_tp":"20","join_ipp_id":"","smid1":"header","smid2":"logout","smid3":"signup"}}},"page":"/signup","query":{},"buildId":"C-y84R4FJsGwyq1W12LPG","isFallback":false,"customServer":true,"appGip":true,"head":[["meta",{"charSet":"utf-8"}],["title",{"children":"회원가입-인터파크"}],["meta",{"name":"viewport","content":"width=device-width, initial-scale=1, user-scalable=no"}],["link",{"rel":"stylesheet","href":"/styles/common/join.css"}]]}</script>
-        <script nomodule="" src="/_next/static/chunks/polyfills-e4f23f7d1e63c27bd365.js"></script>
-        <script src="/_next/static/chunks/main-99f9554c6ed948ddafe3.js" async=""></script>
-        <script src="/_next/static/chunks/webpack-1ec32ec1785681c78f2b.js" async=""></script>
-        <script src="/_next/static/chunks/framework.cb05d56be993eb6b088a.js" async=""></script>
-        <script src="/_next/static/chunks/61500a128bdfbf1474caf822a043eb75aa40efd8.fb670ca42318d801fe33.js"
-            async=""></script>
-        <script src="/_next/static/chunks/3eba62165a833df19ea14b710d2bac4c0974a359.220b41eb3da116f38222.js"
-            async=""></script>
-        <script src="/_next/static/chunks/pages/_app-ab14b16d2a67665fb96a.js" async=""></script>
-        <script src="/_next/static/chunks/8f05b8a56cdaa575b02b37d05b818f52bbd0ceb3.5adef2f342aa297b0b06.js"
-            async=""></script>
-        <script src="/_next/static/chunks/pages/signup-d178b8be599b284be5c6.js" async=""></script>
-        <script src="/_next/static/C-y84R4FJsGwyq1W12LPG/_buildManifest.js" async=""></script>
-        <script src="/_next/static/C-y84R4FJsGwyq1W12LPG/_ssgManifest.js" async=""></script>
-        <script type="text/javascript" id="" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-        <div style="display: none; visibility: hidden;">
-
-            <script
-                type="text/javascript">var TRS_AIDX = 9308, TRS_DOMAIN = "interpark.com", TRS_PROTOCOL = document.location.protocol; document.writeln(); var TRS_URL = TRS_PROTOCOL + "//" + ("https:" == TRS_PROTOCOL ? "analysis.adinsight.co.kr" : "adlog.adinsight.co.kr") + "/emnet/trs_esc.js"; document.writeln("\x3cscript language\x3d'javascript' src\x3d'" + TRS_URL + "'\x3e\x3c/script\x3e");</script>
-            <script language="javascript" src="https://analysis.adinsight.co.kr/emnet/trs_esc.js"></script>
-
-
-
-            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-            <script>
-                function execDaumPostcode() {
-                    new daum.Postcode({
-                        oncomplete: function (data) {
-                            document.getElementById('inputAddress').value = data.address; // 주소 입력 필드
-                            document.getElementById('inputPostCode').value = data.zonecode; // 우편번호 입력 필드
-                        }
-                    }).open();
+    </div>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    document.getElementById('inputAddress').value = data.address; // 주소 입력 필드
+                    document.getElementById('inputPostCode').value = data.zonecode; // 우편번호 입력 필드
                 }
-            </script>
+            }).open();
+        }
 
-        </div>
-        <script type="text/javascript"
-            id="">try { appboy.getUser().setCustomUserAttribute("PC_PageCategory", "공통_회원가입") } catch (a) { };</script>
-        <script type="text/javascript" id="">kakaoPixel("8709382144194201477").pageView();</script>
+        document.getElementById('togglePwBtn').addEventListener('click', function() {
+            const passwordInput = document.getElementById('inputPw');
+            const toggleBtn = document.getElementById('togglePwBtn');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+        document.getElementById('togglePwConfirmBtn').addEventListener('click', function() {
+            const passwordInput = document.getElementById('inputPwConfirm');
+            const toggleBtn = document.getElementById('togglePwConfirmBtn');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    </script>
 
-
-        <script src="/_next/static/chunks/beacf2ecc673480c9473cadc7cc4992efe843d5d.298d74233fcf700d5708.js"></script>
-        <iframe allow="join-ad-interest-group" data-tagging-id="G-4SKTL7E8Q8" data-load-time="1721705541369" height="0"
-            width="0"
-            src="https://td.doubleclick.net/td/ga/rul?tid=G-4SKTL7E8Q8&amp;gacid=1060646371.1718006913&amp;gtm=45je47h0v877482595z89177020785za200zb9177020785&amp;dma=0&amp;gcd=13l3l3l3l1&amp;npa=0&amp;pscdl=noapi&amp;aip=1&amp;fledge=1&amp;frm=0&amp;z=353736929"
-            style="display: none; visibility: hidden;"></iframe><iframe allow="join-ad-interest-group"
-            data-tagging-id="G-4SKTL7E8Q8" data-load-time="1721705673407" height="0" width="0"
-            src="https://td.doubleclick.net/td/ga/rul?tid=G-4SKTL7E8Q8&amp;gacid=1060646371.1718006913&amp;gtm=45je47h0v877482595z89177020785za200zb9177020785&amp;dma=0&amp;gcd=13l3l3l3l1&amp;npa=0&amp;pscdl=noapi&amp;aip=1&amp;fledge=1&amp;frm=0&amp;z=312049692"
-            style="display: none; visibility: hidden;"></iframe><iframe allow="join-ad-interest-group"
-            data-tagging-id="G-4SKTL7E8Q8" data-load-time="1721705767951" height="0" width="0"
-            src="https://td.doubleclick.net/td/ga/rul?tid=G-4SKTL7E8Q8&amp;gacid=1060646371.1718006913&amp;gtm=45je47h0v877482595z89177020785za200zb9177020785&amp;dma=0&amp;gcd=13l3l3l3l1&amp;npa=0&amp;pscdl=noapi&amp;aip=1&amp;fledge=1&amp;frm=0&amp;z=2087893483"
-            style="display: none; visibility: hidden;"></iframe><iframe allow="join-ad-interest-group"
-            data-tagging-id="G-4SKTL7E8Q8" data-load-time="1721705933568" height="0" width="0"
-            src="https://td.doubleclick.net/td/ga/rul?tid=G-4SKTL7E8Q8&amp;gacid=1060646371.1718006913&amp;gtm=45je47h0v877482595z89177020785za200zb9177020785&amp;dma=0&amp;gcd=13l3l3l3l1&amp;npa=0&amp;pscdl=noapi&amp;aip=1&amp;fledge=1&amp;frm=0&amp;z=1494556176"
-            style="display: none; visibility: hidden;"></iframe>
-        <script src="/_next/static/chunks/pages/member/agreement-3f11790d324eabefe849.js"></script>
-        <script src="/_next/static/chunks/29107295.d7be871bf40272ee113b.js"></script>
-        <script src="/_next/static/chunks/7acfaa7b9a4694c72358d9da09348526a87fd466.fabcd5e5505089d54b8d.js"></script>
-        <script src="/_next/static/chunks/5856b35e951e3eee8e0e1b376cf7e62939bef1b8.68dc6f0a7b4c41779a6a.js"></script>
-        <script src="/_next/static/chunks/0c2152d7c3db63e050423c0c7c9abdd7d61ce72d.961ca851997de8445bf7.js"></script>
-        <script src="/_next/static/chunks/c545b0c35f1ce6f9d11a0b14d4aed495fc65ca98.5874af50c535fe57808c.js"></script>
-        <script src="/_next/static/chunks/pages/member/signup-a9589f9e54ef97f98de1.js"></script>
 </body>
 
 </html>

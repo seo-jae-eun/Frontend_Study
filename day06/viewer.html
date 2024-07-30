@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <video autoplay id="videoElement"></video>
+    <button id="startBtn" onclick="start()">시작</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        async function start() {
+            const peer = createPeer();
+            // 방송 수신만 하겠다는 코드
+            peer.addTransceiver("video", { direction: "recvonly" })
+        }
+
+        function createPeer() {
+            const servers = {
+                iceServers: [
+                    {
+                        urls: 'stun:stun.l.google.com:19302'
+                    },
+                    {
+                        urls: "turn:192.168.0.124:3478",
+                        username: "testuser",
+                        credential: "qwer1234"
+                    }
+                ]
+            };
+            const peer = new RTCPeerConnection(servers);
+
+            // 원격 피어로부터 수신되는 미디어 스트림을 video 태그에 재생
+            peer.ontrack = (event) => {
+                document.getElementById("videoElement").srcObject = event.streams[0];
+            }
+
+            peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
+
+            return peer;
+        }
+
+        async function handleNegotiationNeededEvent(peer) {
+            const offer = await peer.createOffer();
+            await peer.setLocalDescription(offer);
+            const data = {
+                sdp: peer.localDescription,
+            };
+            const result = await axios.post("/api/watch", data);
+            const serverSdp = new RTCSessionDescription(result.data.sdp);
+            peer.setRemoteDescription(serverSdp);
+        }
+    </script>
+</body>
+
+</html>

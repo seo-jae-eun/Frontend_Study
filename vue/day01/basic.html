@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 실제 보여지는 내용 : view` -->
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <button @click="update">바꾸기</button>
+    </div>
+
+    <!-- Vue 3 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script>
+        // Vue 객체 생성
+        const app = Vue.createApp(
+            {
+                data() { // model
+                    return { message: "변경 전" };
+                },
+                methods: { // 기능적인 부분 viewmodel
+                    update() {
+                        this.message = "변경 후";
+                    }
+                }
+            }
+        );
+        // Vue 객체를 <div id="app"></div> 태그에 연결
+        app.mount('#app');
+    </script>
+
+</body>
+
+</html>

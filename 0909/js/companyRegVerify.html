@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        let verifyInfo = {
+            uuid: ""
+        }
+
+        const register = async () => {
+            let request = {
+                b_no: "",
+                p_nm: "",
+                start_dt: ""
+            }
+
+            let url = "http://localhost:8080/company-reg/verify";
+            let response = await axios.post(url, request);
+            console.log(response);
+
+            verifyInfo = response.data.result;
+            console.log(verifyInfo);
+        }
+    </script>
+
+</body>
+
+</html>

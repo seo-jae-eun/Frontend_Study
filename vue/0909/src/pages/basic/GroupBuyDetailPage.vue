@@ -1,7 +1,7 @@
 <template>
     <div id="wrapper">
         <HeaderComponent></HeaderComponent>
-        <MainComponent></MainComponent>
+        <GroupbuyDetailComponent></GroupbuyDetailComponent>
         <FooterComponent></FooterComponent>
     </div>
 
@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import HeaderComponent from '../components/HeaderComponent.vue'
-import FooterComponent from '../components/FooterComponent.vue'
-import MainComponent from '../components/GroupbuyComponent.vue'
+import HeaderComponent from '../../components/basic/HeaderComponent.vue'
+import FooterComponent from '../../components/basic/FooterComponent.vue'
+import GroupbuyDetailComponent from '../../components/basic/GroupbuyDetailComponent.vue'
 
 
 export default {
@@ -19,7 +19,7 @@ export default {
     components: {
         HeaderComponent,
         FooterComponent,
-        MainComponent
+        GroupbuyDetailComponent
     },
     data() {
         return {

@@ -1,13 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import GroupBuyPage from "@/pages/GroupBuyPage.vue";
-import ProductPage from "@/pages/ProductPage.vue";
+import GroupBuyDetailPage from "@/pages/basic/GroupBuyDetailPage.vue";
+import ProductDetailPage from "@/pages/basic/ProductDetailPage.vue";
+import LoginPage from "@/pages/common/LoginPage.vue";
+import SignupPage from "@/pages/common/SignupPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/gpbuy", component: GroupBuyPage },
-        { path: "/product", component: ProductPage },
+        { path: "/gpbuy/detail", component: GroupBuyDetailPage },
+        { path: "/product/detail", component: ProductDetailPage },
+        { path: "/login", component: LoginPage },
+        { path: "/signup", component: SignupPage },
     ],
 });
 

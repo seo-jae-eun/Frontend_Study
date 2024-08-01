@@ -32,24 +32,24 @@
                         <div class="col-3 header_logo">
                             <h1 class="hidden">로고</h1>
                             <a href="">
-                                <img src="../assets/images/market/logo.svg" alt="번개장터 로고">
+                                <img src="../../assets/images/market/logo.svg" alt="번개장터 로고">
                             </a>
                         </div>
                         <div class="col-6 top_searh_area">
                             <div id="top_searh">
                                 <input type="text" placeholder="상품명, 지역명, @상점명 입력">
-                                <img src="../assets/images/market/search.png" alt="검색">
+                                <img src="../../assets/images/market/search.png" alt="검색">
                             </div>
                         </div>
                         <div class="col-1 b_h_left_menu">
                             <a href="공구등록페이지.html">
-                                <img src="../assets/images/market/sell.png" alt="판매하기">
+                                <img src="../../assets/images/market/sell.png" alt="판매하기">
                                 공구등록
                             </a>
                         </div>
                         <div class="col-1 b_h_left_menu store">
                             <a href="mypage.html">
-                                <img src="../assets/images/market/my_store.png" alt="내상점">
+                                <img src="../../assets/images/market/my_store.png" alt="내상점">
                                 내 정보
                             </a>
                         </div>
@@ -58,7 +58,7 @@
                 <div class="container text-center hamburger_area">
                     <div class="row">
                         <div class="col-md-1 hamburger">
-                            <img id="menu" src="../assets/images/market/hamburger.png" alt="메뉴">
+                            <img id="menu" src="../../assets/images/market/hamburger.png" alt="메뉴">
                         </div>
                         <div class="col-md-4 sell_center">
                     

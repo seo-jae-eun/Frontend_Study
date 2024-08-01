@@ -1,7 +1,7 @@
 <template>
     <div id="wrapper">
         <HeaderComponent></HeaderComponent>
-        <ContentsComponent></ContentsComponent>
+        <MainComponent></MainComponent>
         <FooterComponent></FooterComponent>
     </div>
 
@@ -11,7 +11,7 @@
 <script>
 import HeaderComponent from '../components/HeaderComponent.vue'
 import FooterComponent from '../components/FooterComponent.vue'
-import ContentsComponent from '../components/contents/ProductComponent.vue'
+import MainComponent from '../components/ProductComponent.vue'
 
 
 export default {
@@ -19,7 +19,7 @@ export default {
     components: {
         HeaderComponent,
         FooterComponent,
-        ContentsComponent
+        MainComponent
     },
     data() {
         return {

@@ -10,7 +10,7 @@
                             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="../../assets/images/product/goods_ex.jpg" class="d-block w-100" alt="상품 사진1">
+                                        <img src="../assets/images/goods_ex.jpg" class="d-block w-100" alt="상품 사진1">
                                     </div>
                                 </div>
                                 <button class="carousel-control-prev" type="button"
@@ -31,7 +31,7 @@
                             <hr>
                             <div id="detail_content_info_mid">
                                 <p>
-                                    <img src="../../assets/images/product/time.png" alt="지난 시간">
+                                    <img src="../assets/images/goods/time.png" alt="지난 시간">
                                     <span>0일 전</span>
                                 </p>
                             </div>
@@ -54,7 +54,7 @@
                                     <div class="row g-2">
                                         <div class="col-4">
                                             <div class="p-3 info_btn1">
-                                                <img src="../../assets/images/product/w_heart.svg" alt="찜"> 찜
+                                                <img src="../assets/images/goods/w_heart.svg" alt="찜"> 찜
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -135,6 +135,15 @@ export default {
 </script>
 
 <style scoped>
+
+/* 전체적인 레이아웃 설계 */
+#main_content {
+    width: 1024px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
 #detail_content {
     margin-top: 40px;
     height: 530px;

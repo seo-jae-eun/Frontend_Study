@@ -77,7 +77,10 @@ export default {
 </script>
 
 <style scoped>
-
+section {
+    margin: 0;
+    padding: 0;
+}
 .hotelDetail {
     width: 100%;
     min-width: 32rem;

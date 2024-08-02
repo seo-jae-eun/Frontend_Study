@@ -1,6 +1,5 @@
 <template>
-    
-  <div id="container" class="container login">
+  <div id="container" class="loginContainer login">
     <header>
     </header>
     <div class="loginWrap">
@@ -11,14 +10,8 @@
           </h1>
         </a>
       </div>
-      <form id="loginFrm" name="loginFrm" method="post" action="/login/submit" data-onsubmit="return false;"
-        onsubmit="return false;" autocomplete="off" data-method="ajax">
-        <input type="hidden" id="postProc" name="postProc" value="FULLSCREEN">
-        <input type="hidden" id="LOGIN_TP" name="LOGIN_TP" value="6000">
-        <input type="hidden" id="fromSVC" name="fromSVC" value="tour">
-        <input type="hidden" id="bizId" name="bizId" value="60">
-
-
+      <!-- <form id="loginFrm" name="loginFrm" method="post" action="/login/submit" data-onsubmit="return false;"
+        onsubmit="return false;" autocomplete="off" data-method="ajax"> -->
         <div class="loginInner">
           <div class="loginForm">
             <div class="buttonGroup">
@@ -28,7 +21,7 @@
             <div class="inputBox">
               <div class="inputStyle inputId">
                 <label>
-                  <input value="" autofocus="" type="text" class="inputText id" name="userId" id="userId"
+                  <input v-model="user.email" value="" autofocus="" type="text" class="inputText id" name="userId" id="userId"
                     placeholder="아이디">
                   <span class="focusLine"></span>
                   <i>
@@ -41,14 +34,11 @@
                       </path>
                     </svg>
                   </i>
-                  <button type="button" class="inputBtn btnDel">
-                    <span class="blind">삭제</span>
-                  </button>
                 </label>
               </div>
               <div class="inputStyle inputPw">
                 <label>
-                  <input type="password" class="inputText pw" name="userPwd" id="userPwd" placeholder="비밀번호">
+                  <input v-model="user.password" type="password" class="inputText pw" name="userPwd" id="userPwd" placeholder="비밀번호">
                   <span class="focusLine"></span>
                   <i>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
@@ -66,26 +56,16 @@
                 </label>
               </div>
             </div>
-            <div class="errorMessage">
-              <div class="message">
-              </div>
-            </div>
 
           </div>
 
           <div class="loginButtonBox">
-            <button type="button" class="loginBtn" id="btn_login">
+            <button @click="login" type="button" class="loginBtn" id="btn_login">
               <span>로그인</span>
             </button>
           </div>
           <div class="findList">
             <ul>
-              <!-- <li>
-                <a id="findId" class="findId" href="#">아이디 찾기</a>
-              </li>
-              <li>
-                <a id="findPwd" href="#">비밀번호 찾기</a>
-              </li> -->
               <li>
                 <a id="join" href="/회원가입버튼.html">회원가입</a>
               </li>
@@ -102,17 +82,7 @@
           </div>
 
         </div>
-      </form>
-    </div>
-    <div class="layerContainer" id="findIdLayer">
-      <div class="layer">
-        <p class="layerTitle"><b>아이디 또는 비밀번호가 틀려<br>로그인 할 수 없어요.</b></p>
-        <p class="layerText">먼저 계정을 찾아주세요.</p>
-        <div class="btn">
-          <button type="button" class="btnClose">취소</button>
-          <a href="#" class="btnFind findId">계정 찾기</a>
-        </div>
-      </div>
+      <!-- </form> -->
     </div>
   </div>
 
@@ -120,29 +90,39 @@
 </template>
 
 <script>
+import { useUserStore } from '@/stores/useUserStore';
+import { mapStores } from 'pinia';
+
 export default {
     name: "LoginPage",
     data() {
         return {
-            activeOption: 'user'
+            activeOption: 'user',
+            user: {
+              email: null,
+              password: null
+            }
         }
     },
     methods: {
-    setActive(option) {
-        this.activeOption = option;
+      setActive(option) {
+          this.activeOption = option;
+      },
+      login() {
+        const result = this.userStore.login(this.user);
+        if(result) {
+          this.$router.push("/");
+        }
+      }
+    },
+    computed: {
+      ...mapStores(useUserStore)
     }
-  }
 }
 </script>
 
 <style>
-/*!
- _ _  _
-| | || | Interpark v2.0.10
-| | || | INTERPARK UI Development Team
-`___'|_| /styles/common/common.scss
 
-*/
 html {
     height: 100%;
     -webkit-text-size-adjust: none;
@@ -158,7 +138,7 @@ html {
     font-size: 1.3rem;
     display: block;
   }
-  
+/*   
   html,
   body,
   div,
@@ -235,7 +215,7 @@ html {
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
-  }
+  } */
   
   article,
   aside,
@@ -275,14 +255,14 @@ html {
     font-style: normal;
   }
   
-  a {
+  /* a {
     margin: 0;
     padding: 0;
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
     text-decoration: none;
-  }
+  } */
   
   ins {
     background-color: #ff9;
@@ -358,8 +338,8 @@ html {
   input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-results-button, input[type="search"]::-webkit-search-results-decoration {
     display: none;
   }
-  
-  abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video {
+
+  /* abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -367,7 +347,7 @@ html {
     font-size: 100%;
     vertical-align: baseline;
     background: transparent
-}
+} */
 
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
     display: block
@@ -390,14 +370,14 @@ dfn,em,i {
     font-style: normal
 }
 
-a {
+/* a {
     margin: 0;
     padding: 0;
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
     text-decoration: none
-}
+} */
 
 ins {
     text-decoration: none
@@ -481,113 +461,7 @@ select {
     font-family: Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif
 }
 
-.blind {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    margin: -.1rem;
-    width: .1rem;
-    height: .1rem
-}
-
-.header {
-    position: relative;
-    height: 50px;
-    padding-top: 5px;
-    line-height: 44px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    text-align: center
-}
-
-.header .headerInner {
-    position: relative;
-    width: 100%;
-    height: 100%
-}
-
-.header .headerLogo {
-    background: url('../../assets/images/common/0909.png') 0 0 no-repeat;
-    background-size: 100% auto;
-    position: absolute;
-    top: 12px;
-    left: 20px;
-    width: 119px;
-    height: 50px
-}
-
-.header .headerTitle {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    height: 100%;
-    font-size: 15px;
-    padding: 0 150px;
-    line-height: 50px
-}
-
-@media screen and (min-width: 769px) {
-    .header {
-        height:88px;
-        padding-top: 0;
-        line-height: 68px;
-        border-bottom: 1px solid rgba(0,0,0,.08)
-    }
-
-    .header .headerInner {
-        max-width: 1280px;
-        margin: 0 auto
-    }
-
-    .header .headerLogo {
-        background-position: 0 50%
-    }
-
-    .header .headerLogo,.header .headerLogo.blackLogo {
-        position: absolute;
-        top: auto;
-        bottom: 20px;
-        left: 24px;
-        width: 151px;
-        height: 38px
-    }
-
-    .header .headerLogo.blackLogo {
-        background: url('../../assets/images/common/0909.png') 0 0 no-repeat;
-        background-size: 100% auto
-    }
-
-    .header .headerTitle {
-        padding: 0 190px;
-        line-height: 88px
-    }
-}
-
-.footer {
-    height: 57px
-}
-
-.footer .copyright {
-    text-align: center;
-    padding: 20px 0;
-    font-size: 11px;
-    line-height: 17px;
-    color: #999
-}
-
-@media screen and (min-width: 769px) {
-    .footer {
-        height:80px;
-        background: #fafafa
-    }
-
-    .footer .copyright {
-        padding: 0;
-        line-height: 80px
-    }
-}
-
+  
 /*!
   로그인 페이지 css
 */
@@ -616,12 +490,12 @@ select {
     display: none;
   }
   
-  .container * {
+  .loginContainer * {
     line-height: 1.5;
     font-family: "Pretendard", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   }
   
-  .container .blind {
+  .loginContainer .blind {
     position: absolute;
     overflow: hidden;
     clip: rect(0 0 0 0);
@@ -630,7 +504,7 @@ select {
     height: .1rem;
   }
   
-  .container .intToast {
+  .loginContainer .intToast {
     z-index: 1001;
     display: block;
     position: fixed;
@@ -687,7 +561,7 @@ select {
   .login header .btnClose {
     width: 4rem;
     height: 4rem;
-    background: url("../../assets/images/common/logo.png") 0 0 no-repeat;
+    background: url("../../assets/images/Common/0909.png") 0 0 no-repeat;
   }
   
   .loginLogo {
@@ -699,7 +573,7 @@ select {
     display: inline-block;
     width: 15.6rem;
     height: 15rem;
-    background: url("../../assets/images/common/logo.png") 0 0 no-repeat;
+    background: url("../../assets/images/Common/logo.png") 0 0 no-repeat;
     background-size: 100%;
   }
   

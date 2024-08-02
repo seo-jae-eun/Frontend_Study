@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import HeaderComponent from '../../components/basic/HeaderComponent.vue'
-import FooterComponent from '../../components/basic/FooterComponent.vue'
-import ProductDetailComponent from '../../components/basic/ProductDetailComponent.vue'
+import HeaderComponent from '@/components/User/HeaderComponent.vue'
+import FooterComponent from '@/components/User/FooterComponent.vue'
+import ProductDetailComponent from '@/components/User/ProductDetailComponent.vue'
 
 
 export default {

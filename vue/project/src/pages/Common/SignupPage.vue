@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/common/HeaderComponent.vue'
-import FooterComponent from '@/components/common/FooterComponent.vue'
+import HeaderComponent from '@/components/Common/HeaderComponent.vue'
+import FooterComponent from '@/components/Common/FooterComponent.vue'
 
 
 export default {
@@ -14,7 +14,6 @@ export default {
     components: {
         HeaderComponent,
         FooterComponent,
-        // SignupComponent
     },
     data() {
         return {
@@ -36,7 +35,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video {
     margin: 0;
     padding: 0;
@@ -186,7 +185,7 @@ select {
 }
 
 .header .headerLogo {
-    background: url('../../assets/images/common/0909.png') 0 0 no-repeat;
+    background: url('../../assets/images/Common/0909.png') 0 0 no-repeat;
     background-size: 100% auto;
     position: absolute;
     top: 12px;
@@ -232,7 +231,7 @@ select {
     }
 
     .header .headerLogo.blackLogo {
-        background: url('../../assets/images/common/0909.png') 0 0 no-repeat;
+        background: url('../../assets/images/Common/0909.png') 0 0 no-repeat;
         background-size: 100% auto
     }
 

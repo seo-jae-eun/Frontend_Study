@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import HeaderComponent from '../../components/basic/HeaderComponent.vue'
-import FooterComponent from '../../components/basic/FooterComponent.vue'
-import GroupbuyDetailComponent from '../../components/basic/GroupbuyDetailComponent.vue'
+import HeaderComponent from '@/components/User/HeaderComponent.vue'
+import FooterComponent from '@/components/User/FooterComponent.vue'
+import GroupbuyDetailComponent from '@/components/User/GroupbuyDetailComponent.vue'
 
 
 export default {

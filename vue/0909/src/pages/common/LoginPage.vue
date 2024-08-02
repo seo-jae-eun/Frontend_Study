@@ -22,7 +22,7 @@
         <div class="loginInner">
           <div class="loginForm">
             <div class="buttonGroup">
-              <button type="button" :class="{ active: activeOption === 'basic' }" @click="setActive('basic')">일반</button>
+              <button type="button" :class="{ active: activeOption === 'user' }" @click="setActive('user')">일반</button>
               <button type="button" :class="{ active: activeOption === 'seller' }" @click="setActive('seller')">업체</button>
             </div>
             <div class="inputBox">
@@ -91,7 +91,7 @@
               </li>
             </ul>
           </div>
-          <div id="snsLogin" class="snsLogin" v-if="activeOption === 'basic'" style="display: flex;">
+          <div id="snsLogin" class="snsLogin" v-if="activeOption === 'user'" style="display: flex;">
             <ul>
               <li id="kakao_li">
                 <a href="#" class="kakao" id="openid_kakao">
@@ -124,7 +124,7 @@ export default {
     name: "LoginPage",
     data() {
         return {
-            activeOption: 'basic'
+            activeOption: 'user'
         }
     },
     methods: {

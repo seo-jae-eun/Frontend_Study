@@ -1,15 +1,12 @@
 <template>
     <HeaderComponent :headerTitle="headerTitle"></HeaderComponent>
-    <component :is="currentComponent" @signup-role="handleSignupRole" />
+    <router-view />
     <FooterComponent></FooterComponent>
 </template>
 
 <script>
 import HeaderComponent from '@/components/common/HeaderComponent.vue'
 import FooterComponent from '@/components/common/FooterComponent.vue'
-import SignupComponent from '@/components/common/SignupComponent.vue';
-import SellerSignupComponent from '@/components/common/SellerSignupComponent.vue';
-import BasicSignupComponent from '@/components/common/BasicSignupComponent.vue';
 
 
 export default {
@@ -17,26 +14,24 @@ export default {
     components: {
         HeaderComponent,
         FooterComponent,
-        SignupComponent,
-        SellerSignupComponent,
-        BasicSignupComponent
+        // SignupComponent
     },
     data() {
         return {
             headerTitle: "",
-            currentComponent: "SignupComponent"
         }
     },
-    methods: {
-        handleSignupRole(role) {
-            if(role === 'basic') {
-                this.headerTitle = "일반회원 정보입력";
-                this.currentComponent = "BasicSignupComponent";
-            } else if(role === 'seller')  {
-                this.headerTitle = "업체회원 정보입력";
-                this.currentComponent = "SellerSignupComponent";
-            }
+    watch: {
+      $route(to) {
+        const path = to.path;
+        if (path === '/signup/user') {
+          this.headerTitle = '일반회원 정보입력';
+        } else if (path === '/signup/seller') {
+          this.headerTitle = '업체회원 정보입력';
+        } else {
+          this.headerTitle = '';
         }
+      }
     }
 }
 </script>

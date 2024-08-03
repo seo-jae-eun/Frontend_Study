@@ -9,9 +9,9 @@
                             <div class="col-4">
                                 <div class="row justify-content-end top_header_login">
                                     <div class="col-4">
-                                        <a href="#" class="btn_map_close">
-                                            로그인/회원가입
-                                        </a>
+                                        <router-link to="login" class="btn_map_close">
+                                            {{ userStore.isLoggedIn ? '로그아웃' : '로그인/회원가입' }}
+                                        </router-link>
                                     </div>
                                     <div class="col-4">
                                         <a href="mypage.html">
@@ -88,6 +88,8 @@
 </template>
 
 <script>
+import { mapStores } from 'pinia'
+import { useUserStore } from '@/stores/useUserStore';
 export default {
     name: "HeaderComponent",
     data() {
@@ -95,8 +97,13 @@ export default {
         }
     },
     methods: {
-
-    }
+        logout() {
+            
+        }
+    },
+    computed: {
+        ...mapStores(useUserStore)
+    },
 }
 </script>
 

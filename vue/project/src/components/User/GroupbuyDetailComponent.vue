@@ -4,14 +4,14 @@
             <div class="mainInfo">
                 <div class="mainInfoMiddle">
                     <div class="title">
-                        <p class="ko">공구 제목</p>
+                        <p class="ko">{{ groupbuyStore.waitGroupbuy.gpbuyTitle }}</p>
                     </div>
                     <div class="info">
                         <ul class="data">
-                            <li>카테고리</li>
+                            <li>{{ groupbuyStore.getCategoryText(groupbuyStore.waitGroupbuy.categoryIdx) }}</li>
                         </ul>
-                        <p class="star">목표수량 : 10</p>
-                        <p class="star">입찰 남은 시간 : 10:00:00</p>
+                        <p class="star">목표수량 : {{ groupbuyStore.waitGroupbuy.gpbuyQuantity }}</p>
+                        <p class="star">입찰 남은 시간 : {{ remainingTime }}</p>
                     </div>
                 </div>
             </div>
@@ -21,26 +21,30 @@
 
                 <div class="typeWrap">
                     <article class="typeFilter">
-                        <p class="typeFilterInfo">공구 내용</p>
+                        <p class="typeFilterInfo">{{ groupbuyStore.waitGroupbuy.gpbuyContent }}</p>
                     </article>
                     <div class="typeList">
                         <article class="typeDetails open prodNoType">
                             <div class="typeContent ">
-                                <BidItemComponent  v-for="bid in bidList" :key="bid.bidIdx" :bid="bid"/>
+                                <BidItemComponent v-for="bid in groupbuyStore.waitGroupbuy.bidList" :key="bid.bidIdx" :bid="bid"/>
                             </div>
                         </article>
                     </div>
                 </div>
-                <button type="button" class="topButton active"><span>최상단으로 스크롤 이동</span></button>
+                <button type="button" class="topButton active" @click="scrollToTop"><span>최상단으로 스크롤 이동</span></button>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-import BidItemComponent from './BidItemComponent.vue'
-import axios from "axios";
+import BidItemComponent from './BidItemComponent.vue';
+import { useGroupbuyStore } from '@/stores/useGroupbuyStore';
+import { mapStores } from 'pinia';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
 
+dayjs.extend(duration);
 
 export default {
     name: "GroupbuyDetailComponent",
@@ -48,60 +52,74 @@ export default {
         BidItemComponent
     },
     data() {
-        return { bidList: [], isLoading: true }
+        return {
+            isLoading: true,
+            remainingTime: ''
+        };
+    },
+    computed: {
+      ...mapStores(useGroupbuyStore)
     },
     created() {
-        this.getData();
+        this.groupbuyStore.getWaitGroupbuy(this.$route.params.idx);
+        this.updateRemainingTime();
+        setInterval(this.updateRemainingTime, 1000);
     },
     methods: {
-        async getData() {
-            try {
-                const response = await axios.get("http://localhost:8081/gpbuy/registered/bid/list?gpbuyIdx=2", {
-                    headers: {
-                        Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoid29kbXM1NTIyQG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjI1MDA2NDcsImV4cCI6MTcyMjUwNDI0N30.foe7xjbZueOIxpTTWnXPevBRmfj3ML_wECPokKV1BVM"
-                    }
-                });
-                console.log(response.data.result);
-                this.bidList = response.data.result;
-            } catch (error) {
-                console.log(error);
-            } finally {
-                this.isLoading = false;
-            }
-            
-        }
-        
-    }
-}
+        scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        },
+        calculateRemainingTime(bidEndTime) {
+            const now = dayjs();
+            const bidEndDate = dayjs(bidEndTime);
 
+            if (bidEndDate.isBefore(now)) {
+                return "시간이 만료되었습니다.";
+            }
+
+            const diff = dayjs.duration(bidEndDate.diff(now));
+
+            const hours = String(diff.days() * 24 + diff.hours()).padStart(2, '0');
+            const minutes = String(diff.minutes()).padStart(2, '0');
+            const seconds = String(diff.seconds()).padStart(2, '0');
+
+            return `${hours}:${minutes}:${seconds}`;
+        },
+        updateRemainingTime() {
+            this.remainingTime = this.calculateRemainingTime(this.groupbuyStore.waitGroupbuy.gpbuyBidEndedAt);
+        },
+    }
+};
 </script>
 
 <style scoped>
+
+
 section {
     margin: 0;
     padding: 0;
 }
 .hotelDetail {
-    width: 100%;
+    width: 800px;
     min-width: 32rem;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 
 .hotelDetail .typeFilter {
-    /* border-top: 1rem solid #f3f3f3; */
     padding-left: 0;
     padding-right: 0;
-    padding-bottom: 1.5rem
+    padding-bottom: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 
 .hotelDetail .typeFilterInfo {
     color: #000000;
     /* padding-top: 1.5rem; */
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-align: center
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding-left: 20px;
 }
 
 
@@ -126,7 +144,7 @@ section {
 }
 
 .hotelDetail article {
-    padding: 2rem
+    padding: 1rem
 }
 
 .hotelDetail article:not(:last-child) {
@@ -137,13 +155,13 @@ section {
     display: flex;
     align-items: center;
     color: #999;
-    font-size: 1.3rem
+    font-size: 0.8rem
 }
 
 .hotelDetail .star:before {
     content: "";
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 0.8rem;
+    height: 0.8rem;
     margin-right: .3rem;
     background: url(//openimage.interpark.com/UI/tour/common/common/icon_star_yellow.svg) no-repeat;
     background-size: 100%
@@ -176,7 +194,7 @@ section {
 
 .hotelDetail .mainInfoMiddle .title .en {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 1.8rem
 }
 
@@ -185,7 +203,7 @@ section {
 }
 
 .hotelDetail .mainInfoMiddle .title .en:only-child,.hotelDetail .mainInfoMiddle .title .ko {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     line-height: 3.1rem
 }
 
@@ -199,13 +217,13 @@ section {
 .hotelDetail .mainInfoMiddle .info .data {
     display: flex;
     margin-right: 1rem;
-    padding-left: 1.9rem;
+    padding-left: 1.5rem;
     background: url(//openimage.interpark.com/UI/tour/pages/hotel/detail/icon_hotel.png) no-repeat 0;
-    background-size: 1.4rem
+    background-size: 1rem
 }
 
 .hotelDetail .mainInfoMiddle .info .data li {
-    font-size: 1.3rem;
+    font-size: 0.8rem;
     line-height: 1.6rem;
     color: #999
 }
@@ -409,5 +427,6 @@ select {
 select::-ms-expand {
     display: none
 }
+
 
 </style>

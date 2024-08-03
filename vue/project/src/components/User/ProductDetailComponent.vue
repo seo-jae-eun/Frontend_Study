@@ -26,13 +26,13 @@
                             </div>
                         </div>
                         <div class="col detail_content_info">
-                            <h2>상품명</h2>
-                            <p>00,000<span>원</span></p>
+                            <h2>{{ groupbuyStore.progressGroupbuy.productName }}</h2>
+                            <p>{{ new Intl.NumberFormat('ko-KR').format(groupbuyStore.progressGroupbuy.bidPrice) }}<span>원</span></p>
                             <hr>
                             <div id="detail_content_info_mid">
                                 <p>
                                     <img src="../../assets/images/goods/time.png" alt="지난 시간">
-                                    <span>0일 전</span>
+                                    <span>&nbsp;{{ remainingTime }}</span>
                                 </p>
                             </div>
                             <div id="detail_content_info_state">
@@ -42,11 +42,11 @@
                                 </p>
                                 <p>
                                     <span>남은수량/목표수량</span>
-                                    <span>교환불가능</span>
+                                    <span>{{ groupbuyStore.progressGroupbuy.gpbuyRemainQuantity }}/{{ groupbuyStore.progressGroupbuy.gpbuyQuantity}}</span>
                                 </p>
                                 <p>
                                     <span>업체명</span>
-                                    <span>이름</span>
+                                    <span>{{ groupbuyStore.progressGroupbuy.companyName }}</span>
                                 </p>
                             </div>
                             <div>
@@ -94,11 +94,10 @@
                             </p>
                         </div>
                         <div>
-                            상품내용 입력란입니다.<br>
-                            테스트메시지<br>
+                            {{ groupbuyStore.progressGroupbuy.productContent }}
                         </div>
                     </div>
-                    <img src="http://image.toast.com/aaaaab/ticketlink/TKL_4/info_0718.jpg">
+                    <img v-for="(image, index) in groupbuyStore.progressGroupbuy.productImgUrlList" :key="index" :src="image">
                 </div>
             </div>
             <!-- // goods_info -->
@@ -110,11 +109,18 @@
 </template>
 
 <script>
+import { useGroupbuyStore } from '@/stores/useGroupbuyStore';
+import { mapStores } from 'pinia';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+
+dayjs.extend(duration);
+
 export default {
     name: "ProductDetailComponent",
     data() {
         return {
-
+            remainingTime: ''
         }
     },
     methods: {
@@ -128,8 +134,35 @@ export default {
             if (newValue >= minValue && newValue <= maxValue) {
                 input.value = newValue;
             }
-        }
-    }
+        },
+        calculateRemainingTime(bidEndTime) {
+            const now = dayjs();
+            const bidEndDate = dayjs(bidEndTime);
+
+            if (bidEndDate.isBefore(now)) {
+                return "시간이 만료되었습니다.";
+            }
+
+            const diff = dayjs.duration(bidEndDate.diff(now));
+
+            const hours = String(diff.days() * 24 + diff.hours()).padStart(2, '0');
+            const minutes = String(diff.minutes()).padStart(2, '0');
+            const seconds = String(diff.seconds()).padStart(2, '0');
+
+            return `${hours}:${minutes}:${seconds}`;
+        },
+        updateRemainingTime() {
+            this.remainingTime = this.calculateRemainingTime(this.groupbuyStore.progressGroupbuy.gpbuyEndedAt);
+        },
+    },
+    computed: {
+      ...mapStores(useGroupbuyStore)
+    },
+    created() {
+        this.groupbuyStore.getProgressGroupbuy(this.$route.params.idx);
+        this.updateRemainingTime();
+        setInterval(this.updateRemainingTime, 1000);
+    },
 }
 
 </script>
@@ -177,7 +210,7 @@ export default {
 }
 
 #detail_content_info_mid>p {
-    width: 72px;
+    width: 200px;
     margin-top: 10px;
     float: left;
 }
@@ -271,6 +304,10 @@ export default {
     margin-bottom: 40px;
 }
 
+img {
+    max-width: 100%;
+}
+
 .info_area_left {
     border-right: 1px solid rgb(238, 238, 238);
 }
@@ -278,6 +315,7 @@ export default {
 .info_content {
     text-align: left;
     margin-top: 50px;
+    padding-bottom: 10px;
 }
 
 .info_content>div:nth-child(1) {

@@ -5,13 +5,13 @@
                 <div class="thumbnailWrap"><a
                         data-content-selector=".detailRoomPopContainer"><img
                             :src="bid.productThumbnailImg"
-                            alt="객실 이미지"></a></div>
+                            alt="상품 이미지"></a></div>
                 <div class="roomWrap">
                     <div class="roomNameWrap">
                         <p class="roomName">{{ bid.productName }}</p>
                     </div>
                     <div class="etcInfo">
-                        <div class="promotionWrap"></div>
+                        <div class="promotionWrap">{{ new Intl.NumberFormat('ko-KR').format(bid.bidPrice) }}원</div>
                     </div>
                 </div>
             </div>
@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import { useGroupbuyStore } from '@/stores/useGroupbuyStore';
+import { mapStores } from 'pinia';
 export default {
     name: "BidItemComponent",
     props: ["bid"],
@@ -66,7 +68,10 @@ export default {
                 input.value = newValue;
             }
         }
-    }
+    },
+    computed: {
+      ...mapStores(useGroupbuyStore)
+    },
 }
 </script>
 
@@ -372,7 +377,7 @@ export default {
 }
 
 .typeContentItem .roomInfo .roomWrap .roomNameWrap .roomName {
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 150%;
     font-weight: 700;
     word-break: break-word
@@ -401,8 +406,8 @@ export default {
 }
 
 .typeContentItem .orderInfo .priceWrap>div {
-    padding-top: 1.2rem;
-    padding-bottom: 1.2rem
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem
 }
 
 .typeContentItem .orderInfo .priceWrap>div:not(:first-of-type) {
@@ -457,20 +462,20 @@ export default {
 }
 
 .typeContentItem .orderInfo .priceWrap label .labelText {
-    font-size: 1.5rem;
+    font-size: 0.9rem;
     font-weight: 700;
     padding-left: .8rem
 }
 
 .typeContentItem .orderInfo .buttonWrap {
-    margin-top: 1.6rem
+    margin-top: 1rem
 }
 
 .typeContentItem .orderInfo .buttonWrap button {
     width: 100%;
     height: 4.4rem;
     border-radius: 3rem;
-    font-size: 1.5rem
+    font-size: 0.9rem
 }
 
 .hotelDetail .typeContent.open .typeContentList:nth-child(n+6) {
@@ -1555,11 +1560,11 @@ export default {
     }
 
     .typeContentItem .roomInfo .roomWrap .roomNameWrap .roomName {
-        font-size: 2rem
+        font-size: 1.1rem
     }
 
     .typeContentItem .roomInfo .roomWrap .deadLine {
-        font-size: 1.5rem
+        font-size: 1.3rem
     }
 
     .typeContentItem .etcInfo .serviceWrap ul li,.typeContentItem .etcInfo .serviceWrap ul li button {
@@ -1567,7 +1572,7 @@ export default {
     }
 
     .typeContentItem .orderInfo .priceWrap .roomPriceTextWrap .salePrice {
-        font-size: 1.7rem
+        font-size: 1.5rem
     }
 
     .typeContentItem .orderInfo {
@@ -1577,7 +1582,7 @@ export default {
     }
 
     .typeContentItem .orderInfo .buttonWrap button {
-        height: 4.8rem;
+        height: 3.5rem;
         border-radius: 1rem
     }
 

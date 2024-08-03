@@ -5,7 +5,9 @@ const backend = "/api";
 
 export const useUserStore = defineStore('user', {
     state: () => ({ isLoggedIn: false }),
-    persist: true,
+    persist: {
+        storage: sessionStorage,
+    },
     actions: {
         async login(user) {
             let response = await axios.post(backend + "/user/login", user);

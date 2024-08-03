@@ -22,20 +22,24 @@
 
 <script>
 export default {
-  name: "SignupComponent",
-  data() {
-      return { 
-      }
-  },
-  methods: {
-    signup(role) {
-      this.$emit('signup-role', role);
+    name: "SignupComponent",
+    data() {
+        return { 
+        }
+    },
+    methods: {
+        signup(role) {
+            this.$emit('signup-role', role);
+        }
     }
-  }
 }
 </script>
 
 <style scoped>
+ol,ul {
+    list-style: none
+}
+
 /*!
   회원가입버튼 페이지 css
 

@@ -13,8 +13,8 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: "/", component: UserMainPage },
-        { path: "/gpbuy/detail", component: GroupBuyDetailPage },
-        { path: "/product/detail", component: ProductDetailPage },
+        { path: "/gpbuy/detail/wait/:idx", component: GroupBuyDetailPage },
+        { path: "/gpbuy/detail/progress/:idx", component: ProductDetailPage },
         { path: "/login", component: LoginPage },
         {
             path: "/signup", component: SignupPage

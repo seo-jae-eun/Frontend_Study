@@ -485,8 +485,16 @@ export default {
             this.seller.comUuid = this.userStore.uuid;
 
             const result = this.userStore.sellerSignup(this.seller);
-            if(result) {
-                sessionStorage.removeItem('uuid');
+            if (result) {
+                let user = JSON.parse(sessionStorage.getItem('user'));
+
+                // uuid 키 삭제
+                if (user && user.uuid) {
+                    delete user.uuid;
+                }
+
+                sessionStorage.setItem('user', JSON.stringify(user));
+
                 this.$router.push("/login");
             }
         }

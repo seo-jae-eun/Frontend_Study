@@ -1,9 +1,9 @@
 <template>
     <div class="header">
         <div class="headerInner">
-            <a href="/메인페이지.html" class="headerLogo">
+            <router-link to="/" class="headerLogo">
                 <span class="blind">0909</span>
-            </a>
+            </router-link>
             <div class="headerTitle" v-if="headerTitle">{{ headerTitle }}</div>
         </div>
     </div>

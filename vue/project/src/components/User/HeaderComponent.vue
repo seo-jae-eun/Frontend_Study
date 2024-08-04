@@ -9,7 +9,7 @@
                             <div class="col-4">
                                 <div class="row justify-content-end top_header_login">
                                     <div class="col-4">
-                                        <router-link to="login" class="btn_map_close">
+                                        <router-link to="/login" class="btn_map_close">
                                             {{ userStore.isLoggedIn ? '로그아웃' : '로그인/회원가입' }}
                                         </router-link>
                                     </div>

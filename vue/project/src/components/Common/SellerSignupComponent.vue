@@ -1,290 +1,501 @@
 <template>
-    <div class="contentWrapper registContent">
-                    <div class="uBlock">
-                        <div class="uInputArea emailType">
-                            <div class="col">
-                                <div class="uInput"><label for="inputEmail">이메일</label>
-                                    <div class="inputBox"><input type="text" id="inputEmail" class="inputText"
-                                            tabindex="5" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col selectCol">
-                                <div class="uSelectBox">
-                                    <label>
-                                        <select tabindex="6">
-                                            <option value="direct">직접입력</option>
-                                            <option value="naver.com">@naver.com</option>
-                                            <option value="hanmail.net">@hanmail.net</option>
-                                            <option value="gmail.com">@gmail.com</option>
-                                            <option value="nate.com">@nate.com</option>
-                                            <option value="hotmail.com">@hotmail.com</option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </div>
+  <div class="contentWrapper registContent">
+    <div class="uBlock">
+            <div class="uInputArea emailType">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputEmail">이메일</label>
+                        <div class="inputBox">
+                            <input type="text" id="inputEmail" class="inputText" tabindex="5" v-model="seller.email" @input="validateEmail">
                         </div>
-                        <div class="uErrorText" style="display: block;"></div>
-                        <div class="accountValiBlock" style="display: none;">
-                            <div class="accountGuide"></div>
-                            <p class="blockText">동일 정보로 가입된 계정으로 로그인 하시겠습니까?</p><a href="#"
-                                class="btn btnArrow">로그인하기</a>
-                        </div>
-                    </div>
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput"><label for="inputPw">비밀번호</label>
-                                    <div class="inputBox"><input type="password" id="inputPw" class="inputText" placeholder="8~12자 영문, 숫자, 특수문자" tabindex="2" value="">
-                                            <button type="button" class="btnDel" aria-label="삭제"></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="uBtnArea">
-                                    <button type="button" class="uBtn" id="togglePwBtn">보기</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="uErrorText" style="display: block;"></div>
-                    </div>
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="inputPwConfirm">비밀번호 확인</label>
-                                    <div class="inputBox">
-                                        <input type="password" id="inputPwConfirm" class="inputText" placeholder="8~12자 영문, 숫자, 특수문자" tabindex="3" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="uBtnArea">
-                                    <button type="button" class="uBtn" id="togglePwConfirmBtn">보기</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="uErrorText" style="display: block;"></div>
-                    </div>
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="inputName">이름</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputName" class="inputText" tabindex="4" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="inputBirth">생년월일</label>
-                                    <div class="inputBox">
-                                        <input type="date" id="inputBirth" class="inputText" tabindex="4" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="genderMale">성별</label>
-                                    <div class="inputBox radioBox">
-                                        <input type="radio" id="genderMale" name="gender" value="male" tabindex="4">
-                                        <label for="genderMale">남성</label>
-                                        <input type="radio" id="genderFemale" name="gender" value="female" tabindex="5">
-                                        <label for="genderFemale">여성</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="inputPostCode">우편번호</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputPostCode" class="inputText" tabindex="2" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="uBtnArea"><button type="button" class="uBtn"
-                                        onclick="execDaumPostcode()">우편번호 찾기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput"><label for="inputAddress">주소</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputAddress" class="inputText" tabindex="4" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="inputDetailAddr">상세주소</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputDetailAddr" class="inputText" tabindex="4" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="certBox">
-                        <div class="uBlock">
-                            <div class="uInputArea">
-                                <div class="col">
-                                    <div class="uInput">
-                                        <label for="inputResNum">사업자등록번호</label>
-                                        <div class="inputBox">
-                                            <input type="text" id="inputResNum" class="inputText" tabindex="4" value="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="uBlock">
-                            <div class="uInputArea">
-                                <div class="col">
-                                    <div class="uInput">
-                                        <label for="inputCEOName">대표자명</label>
-                                        <div class="inputBox">
-                                            <input type="text" id="inputCEOName" class="inputText" tabindex="4" value="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="uBlock">
-                            <div class="uInputArea">
-                                <div class="col">
-                                    <div class="uInput"><label for="inputOpenDate">개업일자</label>
-                                        <div class="inputBox">
-                                            <input type="date" id="inputOpenDate" class="inputText" tabindex="4" value="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="uBtnArea"><button type="button" class="uBtn borderType">사업자등록번호 인증하기 (필수)</button>
-                        </div>
-                    </div>
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput"><label for="inputMosNum">통신판매업번호</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputMosNum" class="inputText" tabindex="4" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput"><label for="inputBankName">은행명</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputBankName" class="inputText" tabindex="4" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="inputDepoName">예금주명</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputDepoName" class="inputText" tabindex="4" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="inputAccount">계좌번호</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputAccount" class="inputText" tabindex="4" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="uBlock">
-                        <div class="uInputArea">
-                            <div class="col">
-                                <div class="uInput">
-                                    <label for="inputCellphone">휴대폰</label>
-                                    <div class="inputBox">
-                                        <input type="text" id="inputCellphone" class="inputText" placeholder="010 1234 5678" tabindex="7" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="uBlock">
-                            <p class="blockText">※ 가입 후 이메일 인증해야 로그인 가능함 ㅎ_ㅎ</p>
-                        </div>
-                        <a href="/구매자/메인페이지.html">
-                            <div class="ubtnArea">
-                                <div class="col"><button type="button" class="uBtn point" disabled="">가입완료</button>
-                                </div>
-                            </div>
-                        </a>
                     </div>
                 </div>
+                <div class="col selectCol">
+                    <div class="uSelectBox">
+                        <label>
+                            <select @change="updateEmail" v-model="selectedDomain" tabindex="6">
+                                <option value="">직접 입력</option>
+                                <option value="@naver.com">@naver.com</option>
+                                <option value="@hanmail.net">@hanmail.net</option>
+                                <option value="@gmail.com">@gmail.com</option>
+                                <option value="@nate.com">@nate.com</option>
+                                <option value="@hotmail.com">@hotmail.com</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="emailError">{{ emailError }}</div>
+        </div>
+        
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputPw">비밀번호</label>
+                        <div class="inputBox">
+                            <input type="password" id="inputPw" class="inputText" placeholder="8~12자 영문, 숫자, 특수문자" tabindex="2" v-model="seller.password" @input="validatePassword">
+                            <button type="button" class="btnDel" aria-label="삭제"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="uBtnArea">
+                        <button type="button" class="uBtn" id="togglePwBtn" @click="togglePassword">보기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="passwordError">{{ passwordError }}</div>
+        </div>
+        
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputPwConfirm">비밀번호 확인</label>
+                        <div class="inputBox">
+                            <input type="password" id="inputPwConfirm" class="inputText" placeholder="8~12자 영문, 숫자, 특수문자" tabindex="3" v-model="confirmPassword" @input="validateConfirmPassword">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="confirmPasswordError">{{ confirmPasswordError }}</div>
+        </div>
+        
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputName">이름</label>
+                        <div class="inputBox">
+                            <input type="text" id="inputName" class="inputText" tabindex="4" v-model="seller.name" @input="validateName">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="nameError">{{ nameError }}</div>
+        </div>
+        
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputBirth">생년월일</label>
+                        <div class="inputBox">
+                            <input type="date" id="inputBirth" class="inputText" tabindex="4" v-model="seller.birth" @change="validateBirth">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="birthError">{{ birthError }}</div>
+        </div>
+        
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="genderMale">성별</label>
+                        <div class="inputBox radioBox">
+                            <input type="radio" id="genderMale" name="gender" value="남" v-model="seller.sex" tabindex="4" @change="validateGender">
+                            <label for="genderMale">남성</label>
+                            <input type="radio" id="genderFemale" name="gender" value="여" v-model="seller.sex" tabindex="5" @change="validateGender">
+                            <label for="genderFemale">여성</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="genderError">{{ genderError }}</div>
+        </div>
+        
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputPostCode">우편번호</label>
+                        <div class="inputBox">
+                            <input type="text" id="inputPostCode" class="inputText" tabindex="2" v-model="seller.postCode" @input="validatePostCode">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="uBtnArea">
+                        <button type="button" class="uBtn" @click="execDaumPostcode">우편번호 찾기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="postCodeError">{{ postCodeError }}</div>
+        </div>
+        
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputAddress">주소</label>
+                        <div class="inputBox">
+                            <input type="text" id="inputAddress" class="inputText" tabindex="4" v-model="seller.address" @input="validateAddress">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="addressError">{{ addressError }}</div>
+        </div>
+        
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputDetailAddr">상세주소</label>
+                        <div class="inputBox">
+                            <input type="text" id="inputDetailAddr" class="inputText" tabindex="4" v-model="detailAddress" @input="validateDetailAddress">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="detailAddressError">{{ detailAddressError }}</div>
+        </div>
+
+
+    <div class="certBox">
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputResNum">사업자등록번호</label>
+                        <div class="inputBox">
+                            <input type="text" id="inputResNum" class="inputText" tabindex="4" v-model="companyVerfy.b_no" @input="validateCompanyReg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="companyRegError">{{ companyRegError }}</div>
+        </div>
+
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputCEOName">대표자명</label>
+                        <div class="inputBox">
+                            <input type="text" id="inputCEOName" class="inputText" tabindex="4" v-model="companyVerfy.p_nm" @input="validateCeoName">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="ceoNameError">{{ ceoNameError }}</div>
+        </div>
+
+        <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputOpenDate">개업일자</label>
+                        <div class="inputBox">
+                            <input type="date" id="inputOpenDate" class="inputText" tabindex="4" v-model="companyVerfy.start_dt" @change="validateOpenedDt">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="openedDtError">{{ openedDtError }}</div>
+        </div>
+        <div class="uBtnArea"><button type="button" class="uBtn borderType" :class="{'verified': userStore.uuid}" @click="verifySubmit"> {{ userStore.uuid ? '인증 완료' : '사업자등록번호 인증하기 (필수)' }}</button>
+        </div>
+    </div>
+    <div class="uBlock">
+            <div class="uInputArea">
+                <div class="col">
+                    <div class="uInput">
+                        <label for="inputMosNum">통신판매업번호</label>
+                        <div class="inputBox">
+                            <input type="text" id="inputMosNum" class="inputText" tabindex="4" v-model="seller.sellerMosNum" @input="validateMosNum">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uErrorText" v-if="mosNumError">{{ mosNumError }}</div>
+        </div>
+
+    <div class="uBlock">
+        <div class="uInputArea">
+            <div class="col">
+                <div class="uInput">
+                    <label for="inputBankName">은행명</label>
+                    <div class="inputBox">
+                        <input type="text" id="inputBankName" class="inputText" tabindex="4" v-model="seller.sellerBank" @input="validateBankName">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uErrorText" v-if="bankNameError">{{ bankNameError }}</div>
+    </div>
+
+    <div class="uBlock">
+        <div class="uInputArea">
+            <div class="col">
+                <div class="uInput">
+                    <label for="inputDepoName">예금주명</label>
+                    <div class="inputBox">
+                        <input type="text" id="inputDepoName" class="inputText" tabindex="4" v-model="seller.sellerDepoName" @input="validateDepoName">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uErrorText" v-if="depoNameError">{{ depoNameError }}</div>
+    </div>
+
+    <div class="uBlock">
+        <div class="uInputArea">
+            <div class="col">
+                <div class="uInput">
+                    <label for="inputAccount">계좌번호</label>
+                    <div class="inputBox">
+                        <input type="text" id="inputAccount" class="inputText" tabindex="4" v-model="seller.sellerAccount" @input="validateAccount">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uErrorText" v-if="accountError">{{ accountError }}</div>
+    </div>
+
+    
+    <div class="uBlock">
+        <div class="uInputArea">
+            <div class="col">
+                <div class="uInput">
+                    <label for="inputCellphone">휴대폰</label>
+                    <div class="inputBox">
+                        <input type="text" id="inputCellphone" class="inputText" placeholder="010-1234-5678" tabindex="7" v-model="seller.phoneNumber" @input="validateAndFilterPhoneNumber" pattern="\d*">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uErrorText" v-if="phoneNumberError">{{ phoneNumberError }}</div>
+    </div>
+        
+    <div class="uBlock checkBlock">
+        <div class="uBlock">
+            <p class="blockText">※ 가입 후 이메일 인증까지 완료하여야 계정이 활성화됩니다.</p>
+        </div>
+        <div class="ubtnArea">
+            <div class="col">
+                <button type="button" class="uBtn point" @click="submit" :disabled="isSubmitDisabled">가입완료</button>
+            </div>
+        </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import { useUserStore } from '@/stores/useUserStore';
+import { mapStores } from 'pinia';
 export default {
     name: "SellerSignupComponent",
+    data() {
+        return {
+            companyVerfy: {
+                b_no: '',
+                p_nm: '',
+                start_dt: ''
+            },
+            seller: {
+                email: '',
+                password: '',
+                name: '',
+                birth: '',
+                sex: '',
+                postCode: '',
+                address: '',
+                phoneNumber: '',
+                sellerBank: '',
+                sellerDepoName: '',
+                sellerAccount: '',
+                sellerRegNum: '',
+                sellerMosNum: '',
+                sellerOpenedAt: '',
+                comUuid: '',
+            },
+            confirmPassword: '',
+            selectedDomain: '',
+            detailAddress: '',
+            emailError: '',
+            passwordError: '',
+            confirmPasswordError: '',
+            nameError: '',
+            birthError: '',
+            genderError: '',
+            postCodeError: '',
+            addressError: '',
+            detailAddressError: '',
+            phoneNumberError: '',
+            ceoNameError: '',
+            companyRegError: '',
+            openedDtError: '',
+            isSubmitDisabled: true,
+            depoNameError: '',
+            bankNameError: '',
+            mosNumError: '',
+            accountError: ''
+        };
+    },
+    computed: {
+        ...mapStores(useUserStore)
+    },
+    methods: {
+        validateEmail() {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            this.emailError = emailPattern.test(this.seller.email) ? '' : '유효한 이메일을 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validatePassword() {
+            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,12}$/;
+            this.passwordError = passwordPattern.test(this.seller.password) ? '' : '비밀번호는 8~12자 영문, 숫자, 특수문자를 포함해야 합니다.';
+            this.updateSubmitButtonState();
+        },
+        validateConfirmPassword() {
+            this.confirmPasswordError = this.seller.password === this.confirmPassword ? '' : '비밀번호가 일치하지 않습니다.';
+            this.updateSubmitButtonState();
+        },
+        validateName() {
+            this.nameError = this.seller.name ? '' : '이름을 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateBirth() {
+            this.birthError = this.seller.birth ? '' : '생년월일을 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateGender() {
+            this.genderError = this.seller.sex ? '' : '성별을 선택하세요.';
+            this.updateSubmitButtonState();
+        },
+        validatePostCode() {
+            this.postCodeError = this.seller.postCode ? '' : '우편번호를 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateAddress() {
+            this.addressError = this.seller.address ? '' : '주소를 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateDetailAddress() {
+            this.detailAddressError = this.detailAddress ? '' : '상세주소를 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateCeoName() {
+            this.ceoNameError = this.companyVerfy.p_nm ? '' : '대표자명을 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateCompanyReg() {
+            this.companyRegError = this.companyVerfy.b_no ? '' : '사업자등록번호를 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateOpenedDt() {
+            this.openedDtError = this.companyVerfy.start_dt ? '' : '개업일자를 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateDepoName() {
+            this.depoNameError = this.seller.sellerDepoName ? '' : '예금주명을 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateBankName() {
+            this.bankNameError = this.seller.sellerBank ? '' : '은행명을 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateAccount() {
+            this.accountError = this.seller.sellerAccount ? '' : '계좌번호를 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateMosNum() {
+            this.mosNumError = this.seller.sellerMosNum ? '' : '통신판매업번호를 입력하세요.';
+            this.updateSubmitButtonState();
+        },
+        validateAndFilterPhoneNumber(event) {
+            let input = event.target.value;
 
+            // 숫자만 필터링
+            this.seller.phoneNumber = input.replace(/[^0-9]/g, '');
+
+            // 하이픈을 기준으로 전화번호 포맷팅
+            if (this.seller.phoneNumber.length > 3) {
+                if (this.seller.phoneNumber.length > 7) {
+                    this.seller.phoneNumber = `${this.seller.phoneNumber.slice(0, 3)}-${this.seller.phoneNumber.slice(3, 7)}-${this.seller.phoneNumber.slice(7)}`;
+                } else {
+                    this.seller.phoneNumber = `${this.seller.phoneNumber.slice(0, 3)}-${this.seller.phoneNumber.slice(3)}`;
+                }
+            }
+
+            // 전화번호 유효성 검사 (하이픈 포함)
+            const phonePattern = /^01[0-9]-\d{3,4}-\d{4}$/;
+            this.phoneNumberError = phonePattern.test(this.seller.phoneNumber) ? '' : '유효한 휴대폰 번호를 입력하세요.';
+            
+            this.updateSubmitButtonState();
+        },
+        updateEmail() {
+            this.seller.email = this.seller.email.split('@')[0] + this.selectedDomain; // 선택된 도메인 추가
+            this.validateEmail(); // 이메일 유효성 재검사
+        },
+        togglePassword() {
+            const input = document.getElementById('inputPw');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        },
+        execDaumPostcode() {
+            // eslint-disable-next-line no-undef
+            new daum.Postcode({
+                oncomplete: (data) => {
+                    this.seller.address = data.address; // 주소
+                    this.seller.postCode = Number(data.zonecode); // 우편번호
+                }
+            }).open();
+        },
+        updateSubmitButtonState() {
+            this.isSubmitDisabled = !this.isFormValid();
+        },
+        isFormValid() {
+            return !this.emailError && !this.passwordError && !this.confirmPasswordError &&
+                !this.nameError && !this.birthError && !this.genderError &&
+                !this.postCodeError && !this.addressError && !this.detailAddressError &&
+                !this.phoneNumberError && !this.ceoNameError && !this.companyRegError &&
+                !this.openedDtError && !this.depoNameError && !this.bankNameError &&
+                !this.accountError && !this.mosNumError &&
+                this.seller.email && this.seller.password && this.confirmPassword &&
+                this.seller.name && this.seller.birth && this.seller.sex &&
+                this.seller.postCode && this.seller.address && this.detailAddress &&
+                this.seller.phoneNumber && this.companyVerfy.p_nm &&
+                this.companyVerfy.b_no && this.companyVerfy.start_dt &&
+                this.seller.sellerDepoName && this.seller.sellerBank &&
+                this.seller.sellerAccount && this.seller.sellerMosNum;
+        },
+        async verifySubmit() {
+            const originalStartDt = this.companyVerfy.start_dt;
+            // - 제외
+            this.companyVerfy.start_dt = this.companyVerfy.start_dt.replace(/-/g, '');
+            const result = await this.userStore.compayRegverify(this.companyVerfy);
+            this.companyVerfy.start_dt = originalStartDt;
+
+            if(result) {
+                console.log(this.userStore.uuid);
+            }
+        },
+        submit() {
+            // - 제외
+            this.seller.phoneNumber = this.seller.phoneNumber.replace(/-/g, '');
+            // 상세 주소가 입력된 경우 주소에 추가
+            if (this.detailAddress) {
+                this.seller.address += `, ${this.detailAddress}`; // 콤마로 구분
+            }
+            this.seller.sellerOpenedAt = this.companyVerfy.start_dt;
+            this.seller.sellerRegNum = this.companyVerfy.b_no;
+            this.seller.comUuid = this.userStore.uuid;
+
+            const result = this.userStore.sellerSignup(this.seller);
+            if(result) {
+                sessionStorage.removeItem('uuid');
+                this.$router.push("/login");
+            }
+        }
+    }
 }
+
 </script>
 
 <style scoped>
-/*!
- _ _  _
-| | || | interpark Member Platform v0.2.2
-| | || | INTERPARK UI Development Team
-`___'|_| /styles/pages/member/regist.scss
-
-*/
 .certBox {
   border: 1px solid black;
   padding: 20px;
@@ -335,6 +546,10 @@ export default {
 
 .uBtn.point:disabled {
   background: #ccc;
+}
+
+a {
+  text-decoration: none;
 }
 
 .uInputArea {
@@ -509,6 +724,12 @@ export default {
   border-radius: 6px;
   border: 1px solid #ccc;
   color: #000;
+}
+
+
+.verified {
+    background-color: #4caf50; /* 인증 완료 시 초록색으로 변경 */
+    color: white; /* 텍스트 색상 변경 */
 }
 
 .uErrorText {
@@ -861,9 +1082,9 @@ select::-ms-expand {
   margin-top: 0;
 }
 
-.registContent .uBlock .uErrorText {
+/* .registContent .uBlock .uErrorText {
   display: none;
-}
+} */
 
 .registContent .uBlock .certifyTime {
   font-size: 13px;

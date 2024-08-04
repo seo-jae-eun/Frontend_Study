@@ -38,7 +38,7 @@
                             <div id="detail_content_info_state">
                                 <p>
                                     <span>카테고리</span>
-                                    <span>??</span>
+                                    <span>{{ groupbuyStore.getCategoryText(groupbuyStore.progressGroupbuy.categoryIdx) }}</span>
                                 </p>
                                 <p>
                                     <span>남은수량/목표수량</span>
@@ -97,7 +97,7 @@
                             {{ groupbuyStore.progressGroupbuy.productContent }}
                         </div>
                     </div>
-                    <img v-for="(image, index) in groupbuyStore.progressGroupbuy.productImgUrlList" :key="index" :src="image">
+                    <img class="product_img" v-for="(image, index) in groupbuyStore.progressGroupbuy.productImgUrlList" :key="index" :src="image">
                 </div>
             </div>
             <!-- // goods_info -->
@@ -304,8 +304,10 @@ export default {
     margin-bottom: 40px;
 }
 
-img {
+.product_img {
     max-width: 100%;
+    display: block;
+    margin: 0 auto;
 }
 
 .info_area_left {

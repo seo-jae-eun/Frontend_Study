@@ -4,7 +4,7 @@
     </header>
     <div class="loginWrap">
       <div class="loginLogo">
-        <router-link to="/">
+        <router-link to="/main">
           <h1 class="logo">
             <span>0909</span>
           </h1>
@@ -112,7 +112,7 @@ export default {
       login() {
         const result = this.userStore.login(this.user);
         if(result) {
-          this.$router.push("/");
+          this.$router.push("/main");
         }
       }
     },

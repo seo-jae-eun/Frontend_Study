@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="headerInner">
-            <router-link to="/" class="headerLogo">
+            <router-link to="/main" class="headerLogo">
                 <span class="blind">0909</span>
             </router-link>
             <div class="headerTitle" v-if="headerTitle">{{ headerTitle }}</div>

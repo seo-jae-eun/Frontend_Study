@@ -63,7 +63,7 @@
                                                     <button class="btn btn-outline-secondary" type="button"
                                                         @click="changeQuantity(-1)">-</button>
                                                 </div>
-                                                <input class="form-control text-center" value="1" min="1" max="984"
+                                                <input class="form-control text-center" v-model="quantity" :min="minQuantity" :max="maxQuantity"
                                                     id="quantityInput">
                                                 <div class="input-group-append">
                                                     <button class="btn btn-outline-secondary" type="button"
@@ -120,7 +120,10 @@ export default {
     name: "ProductDetailComponent",
     data() {
         return {
-            remainingTime: ''
+            quantity: 1,
+            remainingTime: '',
+            minQuantity: 1,
+            maxQuantity: 1
         }
     },
     methods: {
@@ -160,6 +163,7 @@ export default {
     },
     created() {
         this.groupbuyStore.getProgressGroupbuy(this.$route.params.idx);
+        this.maxQuantity = this.groupbuyStore.progressGroupbuy.gpbuyRemainQuantity;
         this.updateRemainingTime();
         setInterval(this.updateRemainingTime, 1000);
     },

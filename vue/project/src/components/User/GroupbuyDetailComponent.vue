@@ -26,7 +26,7 @@
                     <div class="typeList">
                         <article class="typeDetails open prodNoType">
                             <div class="typeContent ">
-                                <BidItemComponent v-for="bid in groupbuyStore.waitGroupbuy.bidList" :key="bid.bidIdx" :bid="bid"/>
+                                <BidItemComponent v-for="bid in groupbuyStore.waitGroupbuy.bidList" :key="bid.bidIdx" :bid="bid" :max-quantity="groupbuyStore.waitGroupbuy.gpbuyQuantity"/>
                             </div>
                         </article>
                     </div>
@@ -229,7 +229,7 @@ section {
 }
 
 .hotelDetail .mainInfoMiddle .info .data li:not(:first-child):before {
-    content: "/"
+    content: "/main"
 }
 
 .hotelDetail .mainInfoMiddle .star:after {

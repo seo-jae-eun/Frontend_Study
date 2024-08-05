@@ -28,8 +28,7 @@
                                 <div class="input-group">
                                     <button class="btn btn-outline-secondary" type="button"
                                         @click="changeQuantity(-1)">-</button>
-                                    <input class="form-control text-center" value="1"
-                                        min="1" max="984" id="quantityInput">
+                                    <input class="form-control text-center" v-model="quantity" :min="minQuantity" :max="maxQuantity" id="quantityInput">
                                     <button class="btn btn-outline-secondary" type="button"
                                         @click="changeQuantity(1)">+</button>
                                 </div>
@@ -50,22 +49,18 @@ import { useGroupbuyStore } from '@/stores/useGroupbuyStore';
 import { mapStores } from 'pinia';
 export default {
     name: "BidItemComponent",
-    props: ["bid"],
+    props: ["bid", "maxQuantity"],
     data() {
         return {
-
+            quantity: 1,
+            minQuantity: 1
         }
     },
     methods: {
         changeQuantity(amount) {
-            var input = document.getElementById('quantityInput');
-            var currentValue = parseInt(input.value);
-            var minValue = parseInt(input.min);
-            var maxValue = parseInt(input.max);
-
-            var newValue = currentValue + amount;
-            if (newValue >= minValue && newValue <= maxValue) {
-                input.value = newValue;
+            const newValue = this.quantity + amount;
+            if (newValue >= this.minQuantity && newValue <= this.maxQuantity) {
+                this.quantity = newValue;
             }
         }
     },
@@ -1066,7 +1061,7 @@ export default {
 }
 
 .hotelDetail .mainInfoMiddle .info .data li:not(:first-child):before {
-    content: "/"
+    content: "/main"
 }
 
 .hotelDetail .mainInfoMiddle .star:after {

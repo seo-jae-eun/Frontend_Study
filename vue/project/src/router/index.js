@@ -8,11 +8,13 @@ import SignupPage from "@/pages/Common/SignupPage.vue";
 import SignupComponent from "@/components/Common/SignupComponent.vue";
 import UserSignupComponent from "@/components/Common/UserSignupComponent.vue";
 import SellerSignupComponent from "@/components/Common/SellerSignupComponent.vue";
+import MainPage from "@/pages/Seller/MainPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", component: UserMainPage },
+        { path: "/main", component: UserMainPage },
+        { path: "/seller", component: MainPage },
         { path: "/gpbuy/detail/wait/:idx", component: GroupBuyDetailPage },
         { path: "/gpbuy/detail/progress/:idx", component: ProductDetailPage },
         { path: "/login", component: LoginPage },

@@ -7,7 +7,7 @@
               <button @click="this.$router.push('/signup/user')" type="button" class="uBtn point btnJoin">일반 회원가입</button>
             <div class="snsJoinArea">
               <ul class="listSns">
-                <li class="snsKakao"><a href="#" class="btnSns snsKakaoBtn"><span>카카오로 가입</span></a></li>
+                <li class="snsKakao"><a href="/api/oauth2/authorization/kakao" class="btnSns snsKakaoBtn"><span>카카오로 가입</span></a></li>
               </ul>
             </div>
           </div>
@@ -28,9 +28,9 @@ export default {
         }
     },
     methods: {
-        signup(role) {
-            this.$emit('signup-role', role);
-        }
+        // signup(role) {
+        //     this.$emit('signup-role', role);
+        // },
     }
 }
 </script>

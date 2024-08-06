@@ -12,3 +12,5 @@ const app = createApp(App);
 app.use(pinia);
 app.use(router);
 app.mount("#app");
+
+window.Kakao.init("1251ad76e0afdd87692e4668b0ddb809");

@@ -74,7 +74,7 @@
           <div id="snsLogin" class="snsLogin" v-if="activeOption === 'user'" style="display: flex;">
             <ul>
               <li id="kakao_li">
-                <a href="#" class="kakao" id="openid_kakao">
+                <a href="/api/login/oauth2/code/kakao" class="kakao" id="openid_kakao">
                   <span>카카오톡</span>
                 </a>
               </li>

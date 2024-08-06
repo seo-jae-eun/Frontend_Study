@@ -1,27 +1,21 @@
 {
-  "name": "project",
+  "name": "day05",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 7000",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^1.7.3",
     "core-js": "^3.8.3",
-    "dayjs": "^1.11.12",
     "jest-junit": "^16.0.0",
     "jest-unit": "^0.0.2",
-    "pinia": "^2.2.0",
-    "pinia-plugin-persistedstate": "^3.2.1",
+    "selenium-webdriver": "^4.23.0",
     "vee-validate": "^4.13.2",
     "vue": "^3.2.13",
-    "vue-router": "^4.4.2",
-    "webpack": "^5.93.0",
-    "webpack-cli": "^5.1.4",
     "yup": "^1.4.0"
   },
   "devDependencies": {
